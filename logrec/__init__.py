@@ -4,7 +4,7 @@
     Code lib : logrec
     Fill name : Log Recorder
     Author : Git32-Design
-    Version : Alpha 1.1.1
+    Version : Beta 2.1.1
     create at : 2025/11/8
     lastest update : 2025/12/9
     Used lib : os(Operating system)|time(Time)
@@ -47,8 +47,7 @@ from .logrec import (\
 )
 
 # Module metadata (PEP 396 compliant)
-__version__ = "1.0.0.dev0"
-__version_info__ = (1, 0, 0, 'dev', 0)
+__version__ = "Beta 2.1.1"
 __author__ = "Git32-Design"
 __author_email__ = "git32-design@example.com"
 __license__ = "MIT"
