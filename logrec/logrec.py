@@ -3,15 +3,14 @@
     <===================================================================>
     Code lib : logrec
     Fill name : Log Recorder
-    Author : git32-programmer
-    Version : Dev Alpha 1.0.0
+    Author : Git32-Design
+    Version : Alpha 1.1.1
     create at : 2025/11/8
-    lastest update : 2025/11/8
-    Used lib : os(Operating System)|time(Time)
-    Developing at : Visual Studio Code
-    Developing language : Python 3.10.0
+    lastest update : 2025/12/9
+    Used lib : os(Operating system)|time(Time)
+    IDE : Visual Studio Code
+    Developing language : Python 3.13.0
     Licence : MIT License
-
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
     in the Software without restriction, including without limitation the rights
@@ -29,58 +28,142 @@
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
-    Description : A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use "logging" library.
+    Description : A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use "logging" library. I know, My lib is sucks, But I well publish it to github.
 """
 
-import os # Manage file texts.
+import os # Get file path.
 import time # Get time to record logs.
+
+# I want to add some error in this lib.
+# 1.Path or file not found.
+class FileNotFoundError(Exception):
+    def __init__(self, filename, path="Logrec is good"):
+        self.filename = filename
+        self.path = path
+        message = f"File '{filename}' not found"
+        if path:
+            message += f" in path '{path}'"
+        super().__init__(message)
+    
+    def __str__(self):
+        return f"FileError, Error code[001]: {super().__str__()}"
+
+# 2.Line out of range.
+class LogOutError(Exception):
+    def __init__(self, line):
+        self.line = line
+        message = f"Line {line} out of range, Error code[002]"
+        super().__init__(message)
+    
+    def __str__(self):
+        return f"LogOutError: {super().__str__()}"
+    
+# 3.Don't read file text(File is empty)
+class FileEmptyError(Exception):
+    def __init__(self, filename):
+        self.filename = filename
+        message = f"File '{filename}' is empty, Error code[003]"
+        super().__init__(message)
+    
+    def __str__(self):
+        return f"FileEmptyError: {super().__str__()}"
+
+# 4.Not a supported type.
+class InvalidTypeError(Exception):
+    def __init__(self, type):
+        self.type = type
+        message = f"Type '{type}' is not supported, Error code[004]"
+        super().__init__(message)
+    
+    def __str__(self):
+        return f"InvalidTypeError: {super().__str__()}"
+
+# No more :]
+
+# And, I want to add some function.
+# 1.Test file type and path.
+def check(filepath) -> None:
+    if os.path.exists(filepath) :
+        if (filepath.endswith(".txt",".log")) :
+            pass
+        else:
+            raise InvalidTypeError(filepath.split(".")[1])
+    else :
+        raise FileNotFoundError(filepath)
+    
+# 2.Test file is empty.
+def empty(filepath) -> None:
+    check(filepath)
+    with open(filepath, 'r') as file:
+        if not file.read().strip():
+            raise FileEmptyError(filepath)
+        
+# 3.Test line is out of range.
+def out(filepath, line) -> None:
+    check(filepath)
+    with open(filepath, 'r') as file:
+        if line > len(file.readlines()):
+            raise LogOutError(line)
 
 # Unit 1
 # Record logs of 5 level.
 # 1.Normal
-def log(filepath, text) -> any : 
+def log(filepath, text) : 
+    check(filepath)
     Get : str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    with open(filepath, "a+") as target :
+    with open(filepath, "a+", "utf-8") as target :
         target.write(f"[{Get}] Normal log : {text}\n")
 
 # 2.Tips
-def tip(filepath, text) -> any : 
+def tip(filepath, text) : 
+    check(filepath)
     Get : str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    with open(filepath, "a+") as target :
+    with open(filepath, "a+", "utf-8") as target :
         target.write(f"[{Get}] Tips log : {text}\n")
 
 # 3.Warning
-def warn(filepath, text) -> any : 
+def warn(filepath, text) : 
+    check(filepath)
     Get : str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    with open(filepath, "a+") as target :
+    with open(filepath, "a+", "utf-8") as target :
         target.write(f"[{Get}] Warning log : {text}\n")
 
 # 4.Error
-def err(filepath, text) -> any : 
+def err(filepath, text) : 
+    check(filepath)
     Get : str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    with open(filepath, "a+") as target :
+    with open(filepath, "a+", "utf-8") as target :
         target.write(f"[{Get}] Error log : {text}\n")
         
-# 5.Fatal error
-def fatal(filepath, text) -> any : 
+# 5.Critical error
+def crit(filepath, text) : 
+    check(filepath)
     Get : str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    with open(filepath, "a+") as target :
-        target.write(f"[{Get}] Fatal error log : {text}\n")
+    with open(filepath, "a+", "utf-8") as target :
+        target.write(f"[{Get}] Critical error log : {text}\n")
 
 # Unit 2
 # Manage logs.
 # 1.Read and output logs.
-def re(filepath) -> any : 
+def read(filepath) : 
+    check(filepath)
+    empty(filepath)
     with open(filepath, "r") as target :
         print(target.read())
 
 # 2.Search any logs.
-def search(filepath, line) -> any :
+def search(filepath, line) :
+    check(filepath)
+    out(filepath, line)
+    empty(filepath)
     with open(filepath, "r") as target :
         print(target.readlines()[line])
 
 # 3.Delete any logs.
-def rem(filepath, line) -> any :
+def rem(filepath, line) :
+    check(filepath)
+    out(filepath, line)
+    empty(filepath)
     with open(filepath, "r") as target :
         lines = target.readlines()
         lines.pop(line)
@@ -88,12 +171,17 @@ def rem(filepath, line) -> any :
             target.writelines(lines)
 
 # 4.Clear logs
-def clear(filepath) -> any :
+def clear(filepath) :
+    check(filepath)
+    empty(filepath)
     with open(filepath, "w") as target :
         target.write("")
 
 # 5.Change log
-def change(filepath, line, text) -> any :
+def change(filepath, line, text) :
+    check(filepath)
+    out(filepath, line)
+    empty(filepath)
     with open(filepath, "r") as target :
         lines = target.readlines()
         lines[line] = text
@@ -103,14 +191,20 @@ def change(filepath, line, text) -> any :
 # Unit 3
 # Log informations.
 # 1.Get log's time.
-def gettime(filepath, line) -> any :
+def gettime(filepath, line) :
+    check(filepath)
+    out(filepath, line)
+    empty(filepath)
     with open(filepath, "r") as target :
         lines = target.readlines(line)
         for line in lines :
             print(line.split(" ")[0])
 
 # 2.Get log's level.
-def getlevel(filepath, line) -> any :
+def getlevel(filepath, line) :
+    check(filepath)
+    out(filepath, line)
+    empty(filepath)
     with open(filepath, "r") as target :
         lines = target.readlines(line)
         for line in lines :
@@ -119,7 +213,7 @@ def getlevel(filepath, line) -> any :
 # Unit 4
 # Appendices
 # 1.Credits
-def credits() -> any :
+def credits() :
     print("""
               Credits below
              <------------->
@@ -131,7 +225,7 @@ def credits() -> any :
                git32-Design
                 
                 Processor
-              Python 3.10.0
+              Python 3.13.0
                 
              Function design
               git32-Design
@@ -139,11 +233,11 @@ def credits() -> any :
              Programming tool
             Visual Studio Code
             <----------------->
-        Thanks for VScode's extensions
-                CODEBUDDY
-            Python Extension Pack
-                 Pylance
-       <------------------------------>
+       Thanks for VScode's extensions
+                 CODEBUDDY
+           Python Extension Pack
+                  Pylance
+      <------------------------------>
              Thanks for you using!
        I'll Work hard to make it better!
       <--------------------------------->
@@ -152,7 +246,7 @@ def credits() -> any :
     """)
 
 # 2.Version
-def version() -> any :
+def version() :
     print("""
           Version
          Dev alpha
@@ -165,14 +259,14 @@ def version() -> any :
          2025/11/8
          
            Calls
-       1.sb3_2025@qq.com
+       1.git32mail@qq.com
       2.Netease minecraft
         git32server
      &___________________&
           """)
         
 # 3.License
-def license() -> any :
+def license() :
     print("""
                                   MIT License
 
