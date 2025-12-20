@@ -3,13 +3,13 @@
     <===================================================================>
     Program : PYcmd
     Fill name : Python Command prompt tool
-    Author : git32-programmer
+    Author : Git32-Design
     Version : Dev Alpha 1.0.0
     create at : 2025/11/8
     lastest update : 2025/11/8
     Used lib : os(Managing files)|math(Calculating)|random(Generate random number)|time(Get time string)|pathlib(Get current path)|logrec(Custom lib, Managing logs)
     Developing at : Visual Studio Code
-    Developing language : Python 3.10.0
+    Developing language : Python 3.13.0
     Licence : MIT License
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -434,7 +434,7 @@ def mainloop():
         
 def mainpack():
     mainloop()
-    print("PYcmd Dev alpha 1.0.0\nExiting...\nThank you for using this program!")
+    print("PYcmd Dev alpha 1.0 .0\nExiting...\nThank you for using this program!")
     logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : mainpack, Result: PYcmd exit.")
     time.sleep(random.randint(2, 5))
     
