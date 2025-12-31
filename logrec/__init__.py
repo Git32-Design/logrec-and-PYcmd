@@ -11,23 +11,6 @@
     IDE : Visual Studio Code
     Developing language : Python 3.13.0
     Licence : MIT License
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
     Description : A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use "logging" library. I know, My lib is sucks, But I well publish it to github.
 """
 
@@ -38,6 +21,15 @@ from .logrec import (\
     
     # Log management functions
     re, search, rem, clear, change,
+    
+    # extra helpers
+    search_by_keyword, tail,
+    
+    # export/rotation
+    parse_log_line, export_logs, rotate_logs,
+    
+    # structured log writer
+    json_log, rotate_logs,
     
     # Log information functions
     gettime, getlevel,
@@ -106,23 +98,6 @@ __doc__ = """
     IDE : Visual Studio Code
     Developing language : Python 3.13.0
     Licence : MIT License
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
     Description : A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use "logging" library. I know, My lib is sucks, But I well publish it to github.
 """
 
@@ -133,7 +108,11 @@ __all__ = [
     'log', 'tip', 'warn', 'err', 'fatal',
     
     # Log management
-    're', 'search', 'rem', 'clear', 'change',
+    're', 'search', 'rem', 'clear', 'change', 'search_by_keyword', 'tail',
+    'parse_log_line', 'export_logs',
+    
+    # Log additional
+    'rotate_logs', 'json_log',
     
     # Log information
     'gettime', 'getlevel',
@@ -165,9 +144,9 @@ class LogRecorder:
         """Record error log"""
         return err(self.filepath, text)
     
-    def fatal(self, text):
+    def crit(self, text):
         """Record fatal error log"""
-        return fatal(self.filepath, text)
+        return crit(self.filepath, text)
     
     def read(self):
         """Read and output logs"""
@@ -189,6 +168,22 @@ class LogRecorder:
         """Change specific log line"""
         return change(self.filepath, line, text)
     
+    def parse_log_line(self, line):
+        """Parse a log line into its components"""
+        return parse_log_line(line)
+    
+    def export_logs(self, out_path, fmt='json'):
+        """Export logs to specified format"""
+        return export_logs(self.filepath, out_path, fmt)
+    
+    def json_log(self, message, level='Normal'):
+        """Append a JSON-line formatted log entry"""
+        return json_log(self.filepath, message, level)
+    
+    def rotate_logs(self, max_bytes=1024*1024, backup_count=5):
+        """Rotate logs if they exceed max size"""
+        return rotate_logs(self.filepath, max_bytes, backup_count)
+    
     def get_time(self):
         """Get log times"""
         return gettime(self.filepath)
@@ -208,3 +203,5 @@ class LogRecorder:
     def license(self):
         """Show license"""
         return license()
+
+# Requires: see ../requirements.txt for external packages used in tests/tools

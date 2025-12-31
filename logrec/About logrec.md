@@ -64,6 +64,73 @@ times = logger.get_time()                          # Get all timestamps
 levels = logger.get_level()                        # Get all log levels
 ```
 
+### Demo
+
+A small demo script is included at `logrec/demo_logrec.py`. It shows a minimal workflow:
+
+- create or ensure a `.log` file exists
+- write several log entries using different levels
+- read the file and print it
+- search by line index and modify a line
+- use the `LogRecorder` convenience class
+
+Run the demo from the repository root:
+
+```powershell
+python logrec/demo_logrec.py
+```
+
+The demo is intended to be simple and educational — for production use prefer
+structured logging or Python's `logging` module.
+
+### Rotation & JSON logging
+
+logrec supports exporting logs as JSON lines (jsonl) and provides a simple
+log rotation mechanism with gzip compression for archived logs.
+
+- Write JSON-line logs:
+```python
+import logrec
+logrec.json_log('app.log', 'Something happened', level='Info')
+```
+
+- Export logs as json or csv:
+
+```python
+logrec.export_logs('app.log', 'out.jsonl', fmt='json')
+logrec.export_logs('app.log', 'out.csv', fmt='csv')
+```
+
+- Rotate and zip.(Well generate `app.log.1.gz`, `app.log.2.gz` And more.):
+
+```python
+logrec.rotate_logs('app.log', max_bytes=10*1024, backup_count=5)
+```
+
+Rotation uses a simple rename-and-gzip strategy to archive old logs (for
+example `app.log` -> `app.log.1.gz`). If you need more advanced rotation
+policies (time-based rotation, configurable compression level, automatic
+deletion of old backups), those can be added in future extensions.
+
+# Create logger
+logger = LogRecorder("myapp.log")
+
+# Record logs
+logger.log("User logged in")
+logger.warn("Password will expire soon")
+logger.err("Login failed")
+
+# Manage logs
+logs = logger.read()                              # Read all logs
+search_results = logger.search("login")            # Search specific content
+logger.remove(3)                                   # Delete line 3
+logger.clear()                                     # Clear all logs
+
+# Get information
+times = logger.get_time()                          # Get all timestamps
+levels = logger.get_level()                        # Get all log levels
+```
+
 ### Log Management Functions
 
 ```python
@@ -144,10 +211,10 @@ Issues and Pull Requests are welcome!
 ## 📞 Contact
 
 - Author: Git32-Design
-- Developer page : [User stats page](https://github.com/Git32-Design)
+- Developer page : [User page](https://github.com/Git32-Design)
 - Email: git32mail@qq.com
-- Steam : Git32-Games *In steam, You can call me "Git32Play"*
-- Netease minecraft : git32mcplay *I haven't money to buy release, But netease make me happy, You can call me "git32mc"*
+- Steam : Git32-Games *In steam, You can call me "Git32stm"*
+- Netease minecraft : Git32Design *I haven't money to buy release, But netease make me happy, You can call me "Git32"*
 - Project URL: [Into main page for see updates](https://github.com/Git32-Design/logrec-and-PYcmd)
 
 ## 🙏 Acknowledgments

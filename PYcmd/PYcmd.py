@@ -52,6 +52,9 @@ import time
 import pathlib
 # import "logrec" lib to record logs
 import logrec
+import ast
+import operator as _operator
+import sys
 
 # define functions  
 def read(filepath):  
@@ -254,13 +257,63 @@ def math_func(function) :
         logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : math_func {function}, Result: Invalid function.")
 
 def calc(exp) :
-    testfortype = type(eval(exp)) # I cant programming :[
-    if testfortype == int or testfortype == float or testfortype == complex or testfortype == bool or testfortype == str :
-        print(f"Calculating Successfuly, Calculating expression : {exp}, Result is : {eval(exp)}.")
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : calc {exp}, Result: Calculating expression : {exp}, Result is : {eval(exp)}.")
-    else :
-        print(f"Expression condition isn't passed, Calculating expression : {exp}.")
-        logrec.fatal(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : calc {exp}, Result: Calculating expression : Danger expression.")
+    # safe expression evaluator using ast
+    def _eval(node):
+        if isinstance(node, ast.Expression):
+            return _eval(node.body)
+        if isinstance(node, ast.Num):
+            return node.n
+        if isinstance(node, ast.Constant):
+            return node.value
+        if isinstance(node, ast.BinOp):
+            left = _eval(node.left)
+            right = _eval(node.right)
+            op = _BINOP.get(type(node.op))
+            if op is None:
+                raise ValueError("Unsupported operator")
+            return op(left, right)
+        if isinstance(node, ast.UnaryOp):
+            operand = _eval(node.operand)
+            op = _UNARYOP.get(type(node.op))
+            if op is None:
+                raise ValueError("Unsupported unary operator")
+            return op(operand)
+        if isinstance(node, ast.Call):
+            # allow math functions only
+            func = node.func
+            if isinstance(func, ast.Attribute):
+                # math.sin -> Name(math).attr
+                val = _eval(func.value)
+                raise ValueError("Unsupported call")
+            elif isinstance(func, ast.Name):
+                fname = func.id
+                if fname in _MATH_FUNCS:
+                    args = [_eval(a) for a in node.args]
+                    return _MATH_FUNCS[fname](*args)
+            raise ValueError("Unsupported function call")
+        raise ValueError("Unsupported expression")
+
+    try:
+        # prepare environment
+        _BINOP = {
+            ast.Add: _operator.add,
+            ast.Sub: _operator.sub,
+            ast.Mult: _operator.mul,
+            ast.Div: _operator.truediv,
+            ast.FloorDiv: _operator.floordiv,
+            ast.Mod: _operator.mod,
+            ast.Pow: _operator.pow,
+        }
+        _UNARYOP = {ast.UAdd: _operator.pos, ast.USub: _operator.neg}
+        # expose some math functions
+        _MATH_FUNCS = {k: getattr(math, k) for k in ('sin','cos','tan','sqrt','log','exp') if hasattr(math, k)}
+        node = ast.parse(exp, mode='eval')
+        result = _eval(node)
+        print(f"Calculating Successfully, Calculating expression : {exp}, Result is : {result}.")
+        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : calc {exp}, Result: Calculating expression : {exp}, Result is : {result}.")
+    except Exception as e:
+        print(f"Expression condition isn't passed or unsafe expression: {e}")
+        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : calc {exp}, Result: Calculating expression : Danger expression. Err: {e}")
     
 
 def rand(mode,start,end) :
@@ -437,11 +490,50 @@ def mainpack():
     print("PYcmd Dev alpha 1.0 .0\nExiting...\nThank you for using this program!")
     logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : mainpack, Result: PYcmd exit.")
     time.sleep(random.randint(2, 5))
+
+
+def _build_cli():
+    import argparse
+    parser = argparse.ArgumentParser(prog='PYcmd')
+    sub = parser.add_subparsers(dest='cmd')
+
+    sub.add_parser('read').add_argument('filepath')
+    sub.add_parser('delete').add_argument('filepath')
+    sub.add_parser('listdir').add_argument('directory', nargs='?', default='.')
+    c_write = sub.add_parser('write')
+    c_write.add_argument('filepath')
+    c_write.add_argument('line', type=int)
+    c_write.add_argument('pos', type=int)
+    c_write.add_argument('content')
+    sub.add_parser('calc').add_argument('expression')
+    return parser
+
+
+def run_cli(argv=None):
+    parser = _build_cli()
+    args = parser.parse_args(argv)
+    if args.cmd == 'read':
+        read(args.filepath)
+    elif args.cmd == 'delete':
+        delete(args.filepath)
+    elif args.cmd == 'listdir':
+        listdir(args.directory)
+    elif args.cmd == 'write':
+        write(args.filepath, args.line, args.pos, args.content)
+    elif args.cmd == 'calc':
+        calc(args.expression)
+    else:
+        parser.print_help()
     
 if __name__ == "__main__":
-    mainpack()
+    # if CLI args provided, run CLI; otherwise run interactive mainpack
+    if len(sys.argv) > 1:
+        run_cli(sys.argv[1:])
+    else:
+        mainpack()
     logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : __main__, Result: Exit succesfully.")
 
+# Requires: see ../requirements.txt for external packages used in tests/tools
 # If you want to watch more information, Please check my other account, Account name is in "credit".
 # At end, We want to update this program's lastest version, At that time, We will stop update.
 # It's OK, My dream is be a programmer...
