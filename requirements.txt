@@ -1,4 +1,3 @@
 pytest>=7.0
-gzipfile36>=0.1.3
 # No other external runtime dependencies; stdlib used for main features.
 # Add additional test/dev tools below as needed.
