@@ -61,7 +61,7 @@ __keywords__ = ["log", "logger", "recording", "search", "management", "file", "l
 __project_urls__ = {
     "Homepage": "https://github.com/Git32-Design/logrec-and-PYcmd",
     "Documentation": "None",
-    "Repository": "https://github.com/Git32-Design/logrec.git",
+    "Repository": "https://github.com/Git32-Design/logrec-and-PYcmd.git",
     "Bug Tracker": "https://github.com/Git32-Design/logrec/issues",
 }
 __classifiers__ = [
