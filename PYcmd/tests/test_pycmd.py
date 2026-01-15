@@ -1,4 +1,8 @@
-import PYcmd
+import pathlib
+import sys
+# Get parent folder path
+sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.absolute()))
+import logrec
 
 
 def test_calc_safe():

@@ -1,7 +1,10 @@
 import pytest
-from pathlib import Path
-import logrec
+import pathlib
+import sys
 import os
+# Get parent folder path
+sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.absolute()))
+import logrec
 
 
 def test_json_log_and_export(tmp_path):
