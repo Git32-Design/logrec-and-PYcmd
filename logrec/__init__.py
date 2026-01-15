@@ -26,7 +26,7 @@ from .logrec import (\
     search_by_keyword, tail,
     
     # export/rotation
-    parse_log_line, export_logs, rotate_logs,
+    parse_log_line, export_logs, ,
     
     # structured log writer
     json_log, rotate_logs,
