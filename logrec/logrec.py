@@ -11,23 +11,6 @@
     IDE : Visual Studio Code
     Developing language : Python 3.13.0
     Licence : MIT License
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
     Description : A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use "logging" library. I know, My lib is sucks, But I well publish it to github.
 """
 
@@ -282,68 +265,44 @@ def export_logs(filepath, out_path, fmt='json'):
         raise InvalidTypeError(fmt)
     return exported
 
-# Additional functions
-# 1.Append JSON log entry
-def json_log(filepath, message, level='Normal'):
-    """Append a JSON-line formatted log entry to filepath.
-    Format: {"timestamp":..., "level":..., "message":...}\n
-    Returns True on success.
+# Unit 4
+# Additional helper functions
+# 1.Search by keyword
+def search_by_keyword(filepath, keyword, case_sensitive=False):
+    """Search logs by keyword and return matching lines.
+    Args:
+        filepath: Path to log file
+        keyword: Keyword to search for
+        case_sensitive: If True, perform case-sensitive search (default False)
+    Returns:
+        List of matching log lines
     """
-    import json
-    Get = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    entry = {'timestamp': Get, 'level': level, 'message': message}
-    # ensure file exists
-    if not os.path.exists(filepath):
-        # create empty file
-        open(filepath, 'w', encoding='utf-8').close()
-    with open(filepath, 'a', encoding='utf-8') as f:
-        f.write(json.dumps(entry, ensure_ascii=False) + '\n')
-    return True
+    check(filepath)
+    if not case_sensitive:
+        keyword = keyword.lower()
+    results = []
+    with open(filepath, 'r', encoding='utf-8') as f:
+        for line in f:
+            search_line = line if case_sensitive else line.lower()
+            if keyword in search_line:
+                results.append(line.rstrip('\n'))
+    return results
 
-# 2.Rotate logs
-def rotate_logs(filepath, max_bytes=1024*1024, backup_count=5):
-    """Simple rotation: if file exceeds max_bytes, rotate by renaming
-    filepath -> filepath.1, filepath.1 -> filepath.2 etc, keeping up to backup_count.
-    Returns True if rotation happened, False otherwise.
+# 2.Tail logs
+def tail(filepath, n=10):
+    """Return the last n lines from log file.
+    Args:
+        filepath: Path to log file
+        n: Number of lines to return (default 10)
+    Returns:
+        List of last n lines
     """
-    if not os.path.exists(filepath):
-        raise LRFileNotFoundError(filepath)
-    size = os.path.getsize(filepath)
-    if size < max_bytes:
-        return False
-    import gzip
-    # rotate older files (compressed .N.gz)
-    for i in range(backup_count - 1, 0, -1):
-        src = f"{filepath}.{i}.gz"
-        dst = f"{filepath}.{i+1}.gz"
-        if os.path.exists(src):
-            try:
-                os.replace(src, dst)
-            except Exception:
-                pass
-    # move current to .1 and compress
-    tmp_name = f"{filepath}.1"
-    try:
-        os.replace(filepath, tmp_name)
-    except Exception as e:
-        raise e
-    # compress tmp_name -> tmp_name.gz
-    try:
-        with open(tmp_name, 'rb') as f_in, gzip.open(f"{tmp_name}.gz", 'wb') as f_out:
-            f_out.writelines(f_in)
-        try:
-            os.remove(tmp_name)
-        except Exception:
-            pass
-    except Exception:
-        # if compression fails, keep the uncompressed rotated file
-        pass
-    # create new empty file
-    open(filepath, 'w', encoding='utf-8').close()
-    return True
+    check(filepath)
+    with open(filepath, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    return [line.rstrip('\n') for line in lines[-n:]] if lines else []
 
-
-# Unit 3
+# Unit 5
 # Log informations.
 # 1.Get log's time.
 def gettime(filepath, line=None) :
@@ -385,11 +344,8 @@ def getlevel(filepath, line=None) :
         print(lv)
         return lv
 
-# Unit 4
-# 
-
-# Unit 5
-# Appendices
+# Unit 6
+# Appendces
 # 1.Credits
 def credits() :
     print("""
