@@ -20,7 +20,7 @@ from .logrec import (\
     log, tip, warn, err, crit,
     
     # Log management functions
-    re, search, rem, clear, change,
+    rd, search, rem, clear, change,
     
     # extra helpers
     search_by_keyword, tail,
