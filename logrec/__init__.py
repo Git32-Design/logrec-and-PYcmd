@@ -150,7 +150,7 @@ class LogRecorder:
     
     def read(self):
         """Read and output logs"""
-        return re(self.filepath)
+        return read(self.filepath)
     
     def search(self, line):
         """Search specific log line"""
