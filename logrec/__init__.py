@@ -20,7 +20,7 @@ from .logrec import (\
     log, tip, warn, err, crit,
     
     # Log management functions
-    rd, read, search, rem, clear, change,
+    read, search, rem, clear, change,
     
     # extra helpers
     search_by_keyword, tail,
@@ -108,7 +108,7 @@ __all__ = [
     'log', 'tip', 'warn', 'err', 'fatal',
     
     # Log management
-    'rd', 'read', 'search', 'rem', 'clear', 'change', 'search_by_keyword', 'tail',
+    'read', 'search', 'rem', 'clear', 'change', 'search_by_keyword', 'tail',
     'parse_log_line', 'export_logs',
     
     # Log additional
