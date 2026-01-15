@@ -16,6 +16,8 @@
 
 import os # Get file path.
 import time # Get time to record logs.
+import json # Output json formation.
+import csv # Output with CSV.
 
 # I want to add some error in this lib.
 # 1.Path or file not found.
@@ -95,35 +97,35 @@ def out(filepath, line) -> None:
 # 1.Normal
 def log(filepath, text) : 
     check(filepath)
-    Get : str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    Get = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     with open(filepath, "a+", encoding="utf-8") as target:
         target.write(f"[{Get}] Normal log : {text}\n")
 
 # 2.Tips
 def tip(filepath, text) : 
     check(filepath)
-    Get : str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    Get = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     with open(filepath, "a+", encoding="utf-8") as target:
         target.write(f"[{Get}] Tips log : {text}\n")
 
 # 3.Warning
 def warn(filepath, text) : 
     check(filepath)
-    Get : str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    Get = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     with open(filepath, "a+", encoding="utf-8") as target:
         target.write(f"[{Get}] Warning log : {text}\n")
 
 # 4.Error
 def err(filepath, text) : 
     check(filepath)
-    Get : str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    Get = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     with open(filepath, "a+", encoding="utf-8") as target:
         target.write(f"[{Get}] Error log : {text}\n")
         
 # 5.Critical error
 def crit(filepath, text) : 
     check(filepath)
-    Get : str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    Get = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     with open(filepath, "a+", encoding="utf-8") as target:
         target.write(f"[{Get}] Critical error log : {text}\n")
 
@@ -220,7 +222,6 @@ def export_logs(filepath, out_path, fmt='json'):
     """Export logs to jsonl (default) or csv. Returns number of exported lines.
     fmt: 'json' or 'csv'
     """
-    import json, csv
     check(filepath)
     with open(filepath, 'r', encoding='utf-8') as f:
         lines = f.readlines()
@@ -430,7 +431,7 @@ def license() :
 # >:]      
 # Compatibility aliases
 # "re" is referenced in __init__.py as the read function
-re = read
+rd = read
 # Provide fatal alias expected by some docs
 fatal = crit
 
