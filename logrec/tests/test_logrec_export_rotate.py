@@ -2,7 +2,6 @@ import pytest
 from pathlib import Path
 import logrec
 import os
-import gzip
 
 
 def test_json_log_and_export(tmp_path):
