@@ -108,7 +108,7 @@ __all__ = [
     'log', 'tip', 'warn', 'err', 'fatal',
     
     # Log management
-    're', 'search', 'rem', 'clear', 'change', 'search_by_keyword', 'tail',
+    'rd', 'search', 'rem', 'clear', 'change', 'search_by_keyword', 'tail',
     'parse_log_line', 'export_logs',
     
     # Log additional
