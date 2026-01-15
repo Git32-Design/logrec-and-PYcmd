@@ -396,7 +396,7 @@ def version() :
            Calls
        1.git32mail@qq.com
       2.Netease minecraft
-        git32server
+        Git32Design_
      &___________________&
           """)
         
@@ -429,9 +429,8 @@ def license() :
 # You can watch "version" function to know my calls, You can feedback to these.
 # Thanks for your using!
 # >:]      
+
 # Compatibility aliases
-# "re" is referenced in __init__.py as the read function
-rd = read
 # Provide fatal alias expected by some docs
 fatal = crit
 
