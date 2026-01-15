@@ -11,24 +11,6 @@
     Developing at : Visual Studio Code
     Developing language : Python 3.13.0
     Licence : MIT License
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
     Description : This program is a command prompt tool for managing files.
     It allows you to read, write, create, delete, list, copy, rename, get info,
     create directory, remove directory, and compare files.
@@ -50,11 +32,16 @@ import random
 import time
 # import "pathlib" lib to get current path
 import pathlib
-# import "logrec" lib to record logs
-import logrec
 import ast
 import operator as _operator
 import sys
+# Get parent folder path
+sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.absolute()))
+# import "logrec" to record logs
+import logrec
+
+# Define record path string
+path = f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log"
 
 # define functions  
 def read(filepath):  
@@ -65,10 +52,10 @@ def read(filepath):
         with open(filepath, 'r') as file:  
             content = file.read()
         print(content) 
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : read file {filepath}, Result: Running function successfuly.")
+        logrec.log(path,f"args : read file {filepath}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error reading file: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : read file {filepath}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : read file {filepath}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def write(filepath, line, bitnum, content):  
     try:  
@@ -81,7 +68,7 @@ def write(filepath, line, bitnum, content):
         
         if line < 0 or line >= len(lines):  
             print(f"Line number {line} is out of range.")  
-            logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : write file {filepath}|{line}|{bitnum}|{content}, Result: Line number out of range.")
+            logrec.err(path,f"args : write file {filepath}|{line}|{bitnum}|{content}, Result: Line number out of range.")
             return  
           
         current_line = lines[line]  
@@ -98,20 +85,20 @@ def write(filepath, line, bitnum, content):
               
         print(f"Successfully wrote to file at line {line}, position {bitnum}.")  
           
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : write file {filepath}|{line}|{bitnum}|{content}, Result: Running function successfuly.")
+        logrec.log(path,f"args : write file {filepath}|{line}|{bitnum}|{content}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error writing to file: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : write file {filepath}|{line}|{bitnum}|{content}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : write file {filepath}|{line}|{bitnum}|{content}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def create(filename,filepath,type,text) :
     try :
         file = f"{filepath}/{filename}.{type}"
         with open(file,"w") as f:
             f.write(text)
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : create file {filename}.{type}|{filepath}|{text}, Result: Running function successfuly.")
+        logrec.log(path,f"args : create file {filename}.{type}|{filepath}|{text}, Result: Running function successfuly.")
     except Exception as e :
         print(e)
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : create file {filename}.{type}|{filepath}|{text}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : create file {filename}.{type}|{filepath}|{text}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def delete(filepath):  
     try:  
@@ -120,10 +107,10 @@ def delete(filepath):
             return  
         os.remove(filepath)  
         print(f"File '{filepath}' deleted successfully.")  
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : delete file {filepath}, Result: Running function successfuly.")
+        logrec.log(path,f"args : delete file {filepath}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error deleting file: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : delete file {filepath}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : delete file {filepath}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def listdir(directory="."):  
     try:  
@@ -131,10 +118,10 @@ def listdir(directory="."):
         print(f"Files in '{directory}':")  
         for file in files:  
             print(f"- {file}")  
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : listdir {directory}, Result: Running function successfuly.")
+        logrec.log(path,f"args : listdir {directory}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error listing directory: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : listdir {directory}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : listdir {directory}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def copy(source, destination):  
     try:  
@@ -145,10 +132,10 @@ def copy(source, destination):
             with open(destination, 'wb') as dest_file:  
                 dest_file.write(src_file.read())  
         print(f"File copied from '{source}' to '{destination}'.")  
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : copy file {source}|{destination}, Result: Running function successfuly.")
+        logrec.log(path,f"args : copy file {source}|{destination}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error copying file: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : copy file {source}|{destination}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : copy file {source}|{destination}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def rename(filepath, new_name):  
     try:  
@@ -157,10 +144,10 @@ def rename(filepath, new_name):
             return  
         os.rename(filepath, new_name)  
         print(f"File renamed from '{filepath}' to '{new_name}'.")  
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : rename file {filepath}|{new_name}, Result: Running function successfuly.")
+        logrec.log(path,f"args : rename file {filepath}|{new_name}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error renaming file: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : rename file {filepath}|{new_name}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : rename file {filepath}|{new_name}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def info(filepath):  
     try:  
@@ -172,54 +159,54 @@ def info(filepath):
         print(f"File: {filepath}")  
         print(f"Size: {size} bytes")  
         print(f"Last modified: {modified_time}")  
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : info file {filepath}, Result: Running function successfuly.")
+        logrec.log(path,f"args : info file {filepath}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error getting file info: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : info file {filepath}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : info file {filepath}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def mkdir(dirpath,dirname):  
     try:  
         os.mkdir(f"{dirpath}/{dirname}")  
         print(f"Directory '{dirname}' created successfully.")  
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : mkdir {dirpath}|{dirname}, Result: Running function successfuly.")
+        logrec.log(path,f"args : mkdir {dirpath}|{dirname}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error creating directory: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : mkdir {dirpath}|{dirname}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : mkdir {dirpath}|{dirname}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def rmdir(dirname):  
     try:  
         os.rmdir(dirname)  
         print(f"Directory '{dirname}' removed successfully.")  
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : rmdir {dirname}, Result: Running function successfuly.")
+        logrec.log(path,f"args : rmdir {dirname}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error removing directory: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : rmdir {dirname}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : rmdir {dirname}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def compare(file1, file2):   
     try:  
         with open(file1, 'rb') as f1, open(file2, 'rb') as f2:  
             if f1.read() == f2.read():  
                 print("Files are identical")  
-                logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : compare file {file1}|{file2}, Result: Two files is identical.")
+                logrec.log(path,f"args : compare file {file1}|{file2}, Result: Two files is identical.")
             else:  
                 print("Files are different")  
-                logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : compare file {file1}|{file2}, Result: Two files is different.")
+                logrec.log(path,f"args : compare file {file1}|{file2}, Result: Two files is different.")
     except Exception as e:  
         print(f"Error comparing files: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : compare file {file1}|{file2}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : compare file {file1}|{file2}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def pwd():   
     print(os.getcwd())  
-    logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : pwd, Result: Running function successfuly.")
+    logrec.log(path,f"args : pwd, Result: Running function successfuly.")
 
 def cd(path):   
     try:  
         os.chdir(path)  
         print(f"Changed directory to: {os.getcwd()}")  
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : cd {path}, Result: Running function successfuly.")
+        logrec.log(path,f"args : cd {path}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error changing directory: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : cd {path}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : cd {path}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 def stats(filepath):   
     try:  
@@ -229,10 +216,10 @@ def stats(filepath):
         print(f"Created: {stat.st_ctime}")  
         print(f"Modified: {stat.st_mtime}")  
         print(f"Accessed: {stat.st_atime}")  
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : stats {filepath}, Result: Running function successfuly.")
+        logrec.log(path,f"args : stats {filepath}, Result: Running function successfuly.")
     except Exception as e:  
         print(f"Error getting stats: {e}")  
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : stats {filepath}, Result: Path not found | No permission to access or other error. Err : {e}")
+        logrec.err(path,f"args : stats {filepath}, Result: Path not found | No permission to access or other error. Err : {e}")
 
 
 def math_func(function) :
@@ -242,19 +229,19 @@ def math_func(function) :
         pass
     if func == "pi" or func == "π" :
         print(math.pi)
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : math_func {function}, Result: Returned π.")
+        logrec.log(path,f"args : math_func {function}, Result: Returned π.")
     elif func == "tau" or function == "τ" :
         print(math.pi * 2)
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : math_func {function}, Result: Returned τ.")
+        logrec.log(path,f"args : math_func {function}, Result: Returned τ.")
     elif function == "phi" or function == "Φ" :
         print(1.618)
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : math_func {function}, Result: Returned φ.")
+        logrec.log(path,f"args : math_func {function}, Result: Returned φ.")
     elif function == "e" or function == "euler" :
         print(math.e)
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : math_func {function}, Result: Returned e.")
+        logrec.log(path,f"args : math_func {function}, Result: Returned e.")
     else :
         print("your function is invalid, wait for update!")
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : math_func {function}, Result: Invalid function.")
+        logrec.err(path,f"args : math_func {function}, Result: Invalid function.")
 
 def calc(exp) :
     # safe expression evaluator using ast
@@ -310,23 +297,23 @@ def calc(exp) :
         node = ast.parse(exp, mode='eval')
         result = _eval(node)
         print(f"Calculating Successfully, Calculating expression : {exp}, Result is : {result}.")
-        logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : calc {exp}, Result: Calculating expression : {exp}, Result is : {result}.")
+        logrec.log(path,f"args : calc {exp}, Result: Calculating expression : {exp}, Result is : {result}.")
     except Exception as e:
         print(f"Expression condition isn't passed or unsafe expression: {e}")
-        logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : calc {exp}, Result: Calculating expression : Danger expression. Err: {e}")
+        logrec.err(path,f"args : calc {exp}, Result: Calculating expression : Danger expression. Err: {e}")
     
 
 def rand(mode,start,end) :
     try:
         if mode == "int" :
             print(random.randint(start,end))
-            logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : rand {mode}|{start}|{end}, Result: Running function successfuly.")
+            logrec.log(path,f"args : rand {mode}|{start}|{end}, Result: Running function successfuly.")
         elif mode == "float" :
             print(random.uniform(start,end))
-            logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : rand {mode}|{start}|{end}, Result: Running function successfuly.")
+            logrec.log(path,f"args : rand {mode}|{start}|{end}, Result: Running function successfuly.")
         else :
             print("invalid mode!")
-            logrec.err(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : rand {mode}|{start}|{end}, Result: Invalid mode.")
+            logrec.err(path,f"args : rand {mode}|{start}|{end}, Result: Invalid mode.")
     except Exception as e :
         print(e)
         
@@ -334,7 +321,7 @@ def showt():
     print(f'Time of now:{time.strftime("%H:%M:%S")}')
     print(f'Date of today:{time.strftime("%Y-%m-%d")}')
     print(f'Weekday of today:{time.strftime("%A")}')
-    logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : showt, Result: Getted formated time string.")
+    logrec.log(path,f"args : showt, Result: Getted formated time string.")
 
 def help() :
     print("commands is below")
@@ -364,11 +351,11 @@ def help() :
     print("- license : show license")
     print("- clear : clear screen")
     print("I'll append more functions in the program(update)...")
-    logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : help, Result: Outputed command list.")
+    logrec.log(path,f"args : help, Result: Outputed command list.")
 
 def clear():  
     os.system('cls' if os.name == 'nt' else 'clear')
-    logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : clear, Result: Screen cleared.")
+    logrec.log(path,f"args : clear, Result: Screen cleared.")
     mainpack()
 
 def command(c):
@@ -477,7 +464,7 @@ GitHub: Git32-Design
         
 def mainloop():
     print("Copyright[C] platform=Windows | author=[Git32-Design]")
-    logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : mainloop, Result: PYcmd is running...")
+    logrec.log(path,f"args : mainloop, Result: PYcmd is running...")
     while True:       
         cmd = input(f"this program running in {os.getcwd()}, now|input \"help\", it can help you!>")
         command(cmd.lower())
@@ -488,7 +475,7 @@ def mainloop():
 def mainpack():
     mainloop()
     print("PYcmd Dev alpha 1.0 .0\nExiting...\nThank you for using this program!")
-    logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : mainpack, Result: PYcmd exit.")
+    logrec.log(path,f"args : mainpack, Result: PYcmd exit.")
     time.sleep(random.randint(2, 5))
 
 
@@ -531,7 +518,7 @@ if __name__ == "__main__":
         run_cli(sys.argv[1:])
     else:
         mainpack()
-    logrec.log(f"{pathlib.Path(__file__).parent.absolute()}/PYcmd log record.log",f"args : __main__, Result: Exit succesfully.")
+    logrec.log(path,f"args : __main__, Result: Exit succesfully.")
 
 # Requires: see ../requirements.txt for external packages used in tests/tools
 # If you want to watch more information, Please check my other account, Account name is in "credit".
