@@ -80,5 +80,3 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 - Steam : Git32-Games *In steam, You can call me "Git32stm"*
 - Netease minecraft : Git32Design_ *I haven't money to buy release, But netease make me happy, You can call me "Git32"*
 - Project URL: [Into main page for see updates](https://github.com/Git32-Design/logrec-and-PYcmd)
-
-*This update message was generated automatically based on the logrec library metadata and functionality.*
