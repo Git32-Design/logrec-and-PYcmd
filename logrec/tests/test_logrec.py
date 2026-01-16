@@ -27,7 +27,7 @@ def test_search_by_keyword(tmp_path = f"{pathlib.Path(__file__).parent.absolute(
         found = logrec.search_by_keyword(str(path), "alpha", case_sensitive=False)
         assert isinstance(found, list)
         assert len(found) == 2
-        assert all("alpha" in line.lower() for _, line in found)
+        assert all("alpha" in line.lower() for line in found)
     
 
 def test_change_and_remove(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
