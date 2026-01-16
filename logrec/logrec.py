@@ -22,7 +22,7 @@ import csv # Output with CSV.
 # I want to add some error in this lib.
 # 1.Path or file not found.
 class LRFileNotFoundError(Exception):
-    def __init__(self, filename, path="Logrec is good"):
+    def __init__(self, filename, path):
         self.filename = filename
         self.path = path
         message = f"File '{filename}' not found"
