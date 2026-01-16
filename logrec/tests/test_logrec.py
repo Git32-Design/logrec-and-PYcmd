@@ -6,7 +6,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.absolute()))
 import logrec
 
 def test_log_and_tail(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
-    p = f"{tmp_path}/t.log"
+    with open(f"{tmp_path}/t.log") as ll :
+        p = ll
     p.write_text("", encoding="utf-8")
     # add lines
     logrec.log(str(p), "first")
@@ -19,7 +20,8 @@ def test_log_and_tail(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
 
 
 def test_search_by_keyword(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
-    p = f"{tmp_path}/s.log"
+    with open(f"{tmp_path}/s.log") as ll :
+        p = ll
     p.write_text("", encoding="utf-8")
     logrec.log(str(p), "alpha beta")
     logrec.log(str(p), "gamma alpha")
@@ -29,7 +31,8 @@ def test_search_by_keyword(tmp_path = f"{pathlib.Path(__file__).parent.absolute(
     assert all("alpha" in line.lower() for _, line in found)
 
 def test_change_and_remove(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
-    p = f"{tmp_path}/c.log"
+    with open(f"{tmp_path}/c.log") as ll :
+        p = ll
     p.write_text("", encoding="utf-8")
     logrec.log(str(p), "line1")
     logrec.log(str(p), "line2")
@@ -46,7 +49,8 @@ def test_change_and_remove(tmp_path = f"{pathlib.Path(__file__).parent.absolute(
 
 
 def test_gettime_getlevel_and_logrec_class(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
-    p = f"{tmp_path}/g.log"
+    with open(f"{tmp_path}/g.log") as ll :
+        p = ll
     p.write_text("", encoding="utf-8")
     logrec.log(str(p), "alpha")
     logrec.warn(str(p), "beta")
