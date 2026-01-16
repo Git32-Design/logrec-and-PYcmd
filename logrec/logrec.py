@@ -55,13 +55,20 @@ class FileEmptyError(Exception):
 
 # 4.Not a supported type.
 class InvalidTypeError(Exception):
-    def __init__(self, type):
-        self.type = type
-        message = f"Type '{type}' is not supported, Error code[004]"
+    def __init__(self, obj):
+        self.obj = obj
+        
+        if isinstance(obj, str):
+            type_name = f"string path '{obj}'"
+        elif hasattr(obj, 'mode') and hasattr(obj, 'name') :
+            type_name = f"file object (name='{obj.name}', mode='{obj.mode}')"
+        elif hasattr(obj, '__class__') :
+            type_name = f"object of type '{obj.__class__.__name__}'"
+        else :
+            type_name = f"type '{type(obj).__name__}'"
+        
+        message = f"INvalidTypeError: {type_name} is not supported, Error code[004]"
         super().__init__(message)
-    
-    def __str__(self):
-        return f"InvalidTypeError: {super().__str__()}"
 
 # No more :]
 
