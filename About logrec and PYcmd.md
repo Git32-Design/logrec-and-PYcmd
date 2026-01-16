@@ -102,17 +102,31 @@ python PYcmd/PYcmd.py
 ## 📁 Repository Structure
 
 ```
-logrec-and-PYcmd/
-├── logrec/                    # Log Recorder Library
-│   ├── __init__.py            # Library initialization and metadata
-│   ├── logrec.py              # Core logging functionality
-│   └── About logrec.md        # Detailed logrec documentation
-├── PYcmd/                     # Python Command Tool
-│   ├── PYcmd.py               # Main command tool implementation
-│   └── About PYcmd.md         # Detailed PYcmd documentation
-├── LICENSE                    # Project license
-├── .gitignore                 # Git ignore rules
-└── About logrec and PYcmd.md  # This file - project overview
+logrec-and-PYcmd/              # Main repository folder
+|-- .github/                   # Github settings
+|   |-- workflows/             # To publish package
+|   |   |-- python-package.yml # A setting of publish
+|   |   |__ python-publish.yml # Publish messages
+|-- logrec/                    # Log Recorder Library
+|   |-- tests/                 # Test of logrec
+|   |   |-- test_logrec.py     # Test script
+|   |   |-- c.log              # Test logs
+|   |   |-- g.log              # Test logs
+|   |   |-- s.log              # Test logs
+|   |   |__ t.log              # Test logs
+|   |-- __init__.py            # Library initialization and metadata
+|   |-- logrec.py              # Core logging functionality
+│   |__ About logrec.md        # Detailed logrec documentation
+|-- PYcmd/                     # Python Command Tool
+|   |-- tests/                 # Tests of PYcmd
+|   |   |__ test-PYcmd         # Test script
+│   |-- PYcmd.py               # Main command tool implementation
+|   |__ About PYcmd.md         # Detailed PYcmd documentation
+|-- LICENSE                    # Project license
+|-- .gitignore                 # Git ignore rules
+|-- About logrec and PYcmd.md  # This file - project overview
+|-- requirements.txt           # This repository's requirement modules
+|__ Update msgs.md             # This repository every update informations
 ```
 
 ## 🔗 Integration
@@ -127,7 +141,7 @@ PYcmd uses logrec internally for all operation logging:
 ## 📋 Version Information
 
 ### Current Versions
-- **logrec**: Dev Alpha 1.0.0
+- **logrec**: Release 3.3.2
 - **PYcmd**: Dev Alpha 1.0.0
 - **Project Status**: Development
 
@@ -212,7 +226,7 @@ We welcome contributions! Here's how you can help:
 - Developer page : [User stats page](https://github.com/Git32-Design)
 - Email: git32mail@qq.com
 - Steam : Git32-Games *In steam, You can call me "Git32Play"*
-- Netease minecraft : git32mcplay *I haven't money to buy release, But netease make me happy, You can call me "git32mc"*
+- Netease minecraft : Git32Design__ *I haven't money to buy release, But netease make me happy, You can call me "git32mc"*
 - Project URL: [Into main page for see updates](https://github.com/Git32-Design/logrec-and-PYcmd)
 
 ## 🙏 Acknowledgments

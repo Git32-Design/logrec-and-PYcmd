@@ -170,7 +170,7 @@ Issues and Pull Requests are welcome!
 - Developer page : [User page](https://github.com/Git32-Design)
 - Email: git32mail@qq.com
 - Steam : Git32-Games *In steam, You can call me "Git32stm"*
-- Netease minecraft : Git32Design *I haven't money to buy release, But netease make me happy, You can call me "Git32"*
+- Netease minecraft : Git32Design_ *I haven't money to buy release, But netease make me happy, You can call me "Git32"*
 - Project URL: [Into main page for see updates](https://github.com/Git32-Design/logrec-and-PYcmd)
 
 ## 🙏 Acknowledgments
