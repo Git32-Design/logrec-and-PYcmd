@@ -29,7 +29,7 @@ from .logrec import (\
     parse_log_line, export_logs, ,
     
     # structured log writer
-    json_log, rotate_logs,
+    json_log,
     
     # Log information functions
     gettime, getlevel,
@@ -62,7 +62,7 @@ __project_urls__ = {
     "Homepage": "https://github.com/Git32-Design/logrec-and-PYcmd",
     "Documentation": "None",
     "Repository": "https://github.com/Git32-Design/logrec-and-PYcmd.git",
-    "Bug Tracker": "https://github.com/Git32-Design/logrec/issues",
+    "Bug Tracker": "https://github.com/Git32-Design/logrec-and-PYcmd/issues",
 }
 __classifiers__ = [
     "Development Status :: 3 - Alpha",
@@ -112,7 +112,7 @@ __all__ = [
     'parse_log_line', 'export_logs',
     
     # Log additional
-    'rotate_logs', 'json_log',
+    'json_log',
     
     # Log information
     'gettime', 'getlevel',
