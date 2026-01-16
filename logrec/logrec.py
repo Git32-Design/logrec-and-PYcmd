@@ -68,7 +68,6 @@ class InvalidTypeError(Exception):
 # And, I want to add some function.
 # 1.Test file type and path.
 def check(filepath) -> None:
-    def check(filepath) -> None:
     if os.path.exists(filepath):
         if filepath.endswith((".txt", ".log")):
             return None
