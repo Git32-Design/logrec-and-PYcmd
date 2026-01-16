@@ -6,7 +6,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.absolute()))
 import logrec
 
 def test_log_and_tail(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
-    path = Path(tmp_path) / "t.log"
+    path = pathlib.Path(tmp_path) / "t.log"
     with open(path, 'w', encoding="utf-8") as ll :
         ll.write("")
         logrec.log(str(ll), "first")
@@ -19,7 +19,7 @@ def test_log_and_tail(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
 
 
 def test_search_by_keyword(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
-    path = Path(tmp_path) / "s.log"
+    path = pathlib.Path(tmp_path) / "s.log"
     with open(path, 'w', encoding="utf-8") as ll :
         ll.write("")
         logrec.log(str(ll), "alpha beta")
@@ -31,7 +31,7 @@ def test_search_by_keyword(tmp_path = f"{pathlib.Path(__file__).parent.absolute(
     
 
 def test_change_and_remove(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
-    path = Path(tmp_path) / "c.log"
+    path = pathlib.Path(tmp_path) / "c.log"
     with open(path, 'w', encoding="utf-8") as ll :
         ll.write("")
         logrec.log(str(ll), "line1")
@@ -49,7 +49,7 @@ def test_change_and_remove(tmp_path = f"{pathlib.Path(__file__).parent.absolute(
 
 
 def test_gettime_getlevel_and_logrec_class(tmp_path = f"{pathlib.Path(__file__).parent.absolute()}"):
-    path = Path(tmp_path) / "g.log"
+    path = pathlib.Path(tmp_path) / "g.log"
     with open(f"{tmp_path}/g.log", 'w', encoding="utf-8") as ll :
         ll.write("")
         logrec.log(str(ll), "alpha")
