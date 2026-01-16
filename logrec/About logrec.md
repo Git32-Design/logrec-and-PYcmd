@@ -14,7 +14,7 @@ A simple yet powerful Python library for recording and managing logs, providing 
 ## 📦 Installation
 
 ```bash
-pip install logrec
+pip install logrec-and-PYcmd
 ```
 
 Or copy the `logrec.py` file directly to your project.

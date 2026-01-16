@@ -1,6 +1,6 @@
 logrec Library Update Message
 
-Version Alpha 1.1.1 (2025-12-09)
+Version Rel 3.3.2 (2026-01-17)
 
 🚀 Overview
 The logrec library provides a lightweight and intuitive solution for log recording and management in Python applications. Designed as a simpler alternative to Python's built-in logging module, it offers essential logging functionality with an emphasis on ease of use and file-based log storage.

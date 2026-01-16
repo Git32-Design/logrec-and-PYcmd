@@ -4,7 +4,7 @@
     Code lib : logrec
     Fill name : Log Recorder
     Author : Git32-Design
-    Version : Alpha 1.1.1
+    Version : Rel 3.3.2
     create at : 2025/11/8
     lastest update : 2025/12/9
     Used lib : os(Operating system)|time(Time)
