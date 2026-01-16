@@ -58,14 +58,17 @@ class InvalidTypeError(Exception):
     def __init__(self, obj):
         self.obj = obj
         
-        if isinstance(obj, str):
+        obj_repr = repr(obj)
+
+        if "' mode='" in obj_repr and "encoding='" in obj_repr :
+            if hasattr(obj, 'name') :
+                type_name = f"file object '{obj.name}'"
+            else :
+                type_name = "file object"
+        elif isinstance(obj, str)  and len(obj) < 256 :
             type_name = f"string path '{obj}'"
-        elif hasattr(obj, 'mode') and hasattr(obj, 'name') :
-            type_name = f"file object (name='{obj.name}', mode='{obj.mode}')"
-        elif hasattr(obj, '__class__') :
-            type_name = f"object of type '{obj.__class__.__name__}'"
-        else :
-            type_name = f"type '{type(obj).__name__}'"
+        else:
+            type_name = f"object of type '{type(obj.__name__)}'"
         
         message = f"INvalidTypeError: {type_name} is not supported, Error code[004]"
         super().__init__(message)
