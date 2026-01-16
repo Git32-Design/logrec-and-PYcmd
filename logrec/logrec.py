@@ -68,14 +68,19 @@ class InvalidTypeError(Exception):
 # And, I want to add some function.
 # 1.Test file type and path.
 def check(filepath) -> None:
+    def check(filepath) -> None:
     if os.path.exists(filepath):
-        # accept .txt and .log files
         if filepath.endswith((".txt", ".log")):
             return None
         else:
             raise InvalidTypeError(filepath.split(".")[-1])
     else:
-        raise LRFileNotFoundError(filepath)
+        try:
+            os.makedirs(os.path.dirname(filepath), exist_ok=True)
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write('')
+        except Exception as e:
+            raise LRFileNotFoundError(f"无法创建日志文件: {filepath}, 错误: {e}")
     
 # 2.Test file is empty.
 def empty(filepath) -> None:
