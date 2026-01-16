@@ -83,16 +83,9 @@ python logrec/demo_logrec.py
 The demo is intended to be simple and educational — for production use prefer
 structured logging or Python's `logging` module.
 
-### Rotation & JSON logging
+###  JSON logging
 
 logrec supports exporting logs as JSON lines (jsonl) and provides a simple
-log rotation mechanism with gzip compression for archived logs.
-
-- Write JSON-line logs:
-```python
-import logrec
-logrec.json_log('app.log', 'Something happened', level='Info')
-```
 
 - Export logs as json or csv:
 
@@ -100,17 +93,6 @@ logrec.json_log('app.log', 'Something happened', level='Info')
 logrec.export_logs('app.log', 'out.jsonl', fmt='json')
 logrec.export_logs('app.log', 'out.csv', fmt='csv')
 ```
-
-- Rotate and zip.(Well generate `app.log.1.gz`, `app.log.2.gz` And more.):
-
-```python
-logrec.rotate_logs('app.log', max_bytes=10*1024, backup_count=5)
-```
-
-Rotation uses a simple rename-and-gzip strategy to archive old logs (for
-example `app.log` -> `app.log.1.gz`). If you need more advanced rotation
-policies (time-based rotation, configurable compression level, automatic
-deletion of old backups), those can be added in future extensions.
 
 # Create logger
 logger = LogRecorder("myapp.log")

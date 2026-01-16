@@ -28,9 +28,6 @@ from .logrec import (\
     # export/rotation
     parse_log_line, export_logs,
     
-    # structured log writer
-    json_log,
-    
     # Log information functions
     gettime, getlevel,
     
@@ -111,9 +108,6 @@ __all__ = [
     'read', 'search', 'rem', 'clear', 'change', 'search_by_keyword', 'tail',
     'parse_log_line', 'export_logs',
     
-    # Log additional
-    'json_log',
-    
     # Log information
     'gettime', 'getlevel',
     
@@ -175,10 +169,6 @@ class LogRecorder:
     def export_logs(self, out_path, fmt='json'):
         """Export logs to specified format"""
         return export_logs(self.filepath, out_path, fmt)
-    
-    def json_log(self, message, level='Normal'):
-        """Append a JSON-line formatted log entry"""
-        return json_log(self.filepath, message, level)
     
     def get_time(self):
         """Get log times"""
