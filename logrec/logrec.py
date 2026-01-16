@@ -79,7 +79,7 @@ def check(filepath) -> None:
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write('')
         except Exception as e:
-            raise LRFileNotFoundError(f"无法创建日志文件: {filepath}, 错误: {e}")
+            raise LRFileNotFoundError(f"Can not create log file: {filepath}, Error msgs : {e}")
     
 # 2.Test file is empty.
 def empty(filepath) -> None:
