@@ -180,10 +180,6 @@ class LogRecorder:
         """Append a JSON-line formatted log entry"""
         return json_log(self.filepath, message, level)
     
-    def rotate_logs(self, max_bytes=1024*1024, backup_count=5):
-        """Rotate logs if they exceed max size"""
-        return rotate_logs(self.filepath, max_bytes, backup_count)
-    
     def get_time(self):
         """Get log times"""
         return gettime(self.filepath)
