@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "lrapc"
 version = "3.7.3"
-description = "logrec: A quick record log\'s lib, Can search log file, And record(Or write) logs to a file. It\'s easy, Please use "logging" library. I know, My lib is sucks, But I well publish it to github. PYcmd: A simple command line tool framework for python, Easy to use, Just like click, But more simple."
+description = "logrec: A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use \"logging\" library. I know, My lib is sucks, But I well publish it to github. PYcmd: A simple command line tool framework for python, Easy to use, Just like click, But more simple."
 requires-python = ">= 3.8"
 authors = [
     {name = "Git32-Design", email = "git32mail@qq.com"}
