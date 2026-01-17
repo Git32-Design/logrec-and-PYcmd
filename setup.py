@@ -1,5 +1,5 @@
 # This is a setup script for a Python package using setuptools.
-import setuptools import setup, find_packages
+from setuptools import setup, find_packages
 
 with open("About logrec and PYcmd.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
