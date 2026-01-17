@@ -16,7 +16,7 @@ setup(
     version="3.7.3",
     author="Git32-Design",
     author_email="git32mail@qq.com",
-    description="A quick record log\'s lib, Can search log file, And record(Or write) logs to a file. It\'s easy, Please use \"logging\" library. I know, My lib is sucks, But I well publish it to github."
+    description="A quick record log\'s lib, Can search log file, And record(Or write) logs to a file. It\'s easy, Please use \"logging\" library. I know, My lib is sucks, But I well publish it to github.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Git32-Design/logrec-and-PYcmd",
