@@ -38,7 +38,7 @@ from .logrec import (\
 # Module metadata (PEP 396 compliant)
 __version__ = "3.3.2"
 __author__ = "Git32-Design"
-__author_email__ = "git32-design@example.com"
+__author_email__ = "git32mail@qq.com"
 __license__ = "MIT"
 __copyright__ = "Copyright (c) 2025 Git32-Design"
 __maintainer__ = "Git32-Design"
