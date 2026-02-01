@@ -15,14 +15,8 @@ A powerful command-line tool written in Python for file management, calculations
 
 ## 📦 Installation
 
-1. Clone or download this repository
-2. Ensure Python 3.10 or higher is installed
-3. Copy the `logrec` library to your Python site-packages directory:
-
-```
-# Example path for Windows
-C:/Users/Administrator/AppData/Local/Packages/PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0/LocalCache/local-packages/Python313/site-packages
-```
+1. I published in PyPI. So, you can use `pip install LogrecAndPYcmd` to install package.
+2. Clone Github repository: `git clone https://github.com/yourusername/logrec-and-PYcmd.git`
 
 ## 📖 Usage
 
@@ -170,7 +164,7 @@ Issues and Pull Requests are welcome!
 - Developer page : [User page](https://github.com/Git32-Design)
 - Email: git32mail@qq.com
 - Steam : Git32-Games *In steam, You can call me "Git32stm"*
-- Netease minecraft : Git32Design_ *I haven't money to buy release, But netease make me happy, You can call me "Git32"*
+- Netease minecraft : Git32Design_ *I haven't money to buy release, But Netease make me happy, You can call me "Git32"*
 - Project URL: [Into main page for see updates](https://github.com/Git32-Design/logrec-and-PYcmd)
 
 ## 🙏 Acknowledgments

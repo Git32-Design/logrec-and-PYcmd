@@ -41,6 +41,7 @@ Issues = "https://github.com/Git32-Design/logrec-and-PYcmd/issues"
 Changelog = "https://github.com/Git32-Design/logrec-and-PYcmd/blob/main/Update%20msgs.md"
 MyHomepage = "https://github.com/Git32-Design"
 DOWNLOAD = "https://github.com/Git32-Design/logrec-and-PYcmd/releases"
+PYPI = "https://pypi.org/project/LogrecAndPYcmd/"
 [project.optional-dependencies]
 test = ["pytest >= 7.0"]
 [tool.setuptools.packages.find]

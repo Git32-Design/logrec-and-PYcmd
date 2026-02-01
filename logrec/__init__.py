@@ -32,7 +32,10 @@ from .logrec import (\
     gettime, getlevel,
     
     # Appendix functions
-    credits, version, license
+    credits, version, license,
+    
+    # Custom exceptions
+    LRFileNotFoundError, InvalidTypeError, LogOutError, FileEmptyError
 )
 
 # Module metadata (PEP 396 compliant)
@@ -57,7 +60,7 @@ for production use, this library offers a lightweight alternative for quick logg
 __keywords__ = ["log", "logger", "recording", "search", "management", "file", "logging", "debug"]
 __project_urls__ = {
     "Homepage": "https://github.com/Git32-Design/logrec-and-PYcmd",
-    "Documentation": "None",
+    "Documentation": "https://github.com/Git32-Design/logrec-and-PYcmd/blob/main/About logrec-and-PYcmd.md",
     "Repository": "https://github.com/Git32-Design/logrec-and-PYcmd.git",
     "Bug Tracker": "https://github.com/Git32-Design/logrec-and-PYcmd/issues",
 }
@@ -102,7 +105,7 @@ __doc__ = """
 # Export all public functions
 __all__ = [
     # Log recording
-    'log', 'tip', 'warn', 'err', 'fatal',
+    'log', 'tip', 'warn', 'err', 'crit',
     
     # Log management
     'read', 'search', 'rem', 'clear', 'change', 'search_by_keyword', 'tail',
@@ -112,7 +115,10 @@ __all__ = [
     'gettime', 'getlevel',
     
     # Appendix
-    'credits', 'version', 'license'
+    'credits', 'version', 'license',
+    
+    # Exceptions
+    'LRFileNotFoundError', 'InvalidTypeError', 'LogOutError', 'FileEmptyError',
 ]
 
 # Convenience imports for common use cases
@@ -189,5 +195,21 @@ class LogRecorder:
     def license(self):
         """Show license"""
         return license()
+    
+    def LRFileNotFoundError(self, Exception):
+        """Raise LRFileNotFoundError"""
+        return LRFileNotFoundError(self.filepath, Exception)
+    
+    def InvalidTypeError(self, Exception):
+        """Raise InvalidTypeError"""
+        return InvalidTypeError(self.filepath, Exception)
+    
+    def LogOutError(self, Exception):
+        """Raise LogOutError"""
+        return LogOutError(self.filepath, Exception)
+    
+    def FileEmptyError(self, Exception):
+        """Raise FileEmptyError"""
+        return FileEmptyError(self.filepath, Exception)
 
 # Requires: see ../requirements.txt for external packages used in tests/tools
