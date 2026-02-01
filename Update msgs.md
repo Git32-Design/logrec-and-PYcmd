@@ -1,6 +1,6 @@
 logrec Library Update Message
 
-Version Rel 3.3.2 (2026-01-17)
+Version Release 3.3.2 (2026-01-17)  *Version error, must be 3.7.3(2026-01-17)*
 
 🚀 Overview
 The logrec library provides a lightweight and intuitive solution for log recording and management in Python applications. Designed as a simpler alternative to Python's built-in logging module, it offers essential logging functionality with an emphasis on ease of use and file-based log storage.
@@ -80,3 +80,31 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 - Steam : Git32-Games *In steam, You can call me "Git32stm"*
 - Netease minecraft : Git32Design_ *I haven't money to buy release, But netease make me happy, You can call me "Git32"*
 - Project URL: [Into main page for see updates](https://github.com/Git32-Design/logrec-and-PYcmd)
+- PyPI project: [LogrecAndPYcmd](https://pypi.org/project/LogrecAndPYcmd/)
+---
+# Version Release 4.8.4 (2026-01-31)
+
+## 🚀 Update fast report
+
+## I.🔧 logrec \_\_init\_\_ change report
+
+1. function name *fatal* fix to __crit__.
+
+2. Added custom exception in init program.
+
+## II.❌ PYcmd english and proper nouns fix
+
+1. *github* to *GitHub*.
+
+2. *netease* to *Netease*.
+
+## III.📄 Version number fix for *Update msgs.md*
+
+1. *3.3.2* to *3.7.3*
+
+## IV.Setup.py and pyproject.toml fix
+
+1. Deleted __setup.py__ and __pyproject.toml__ dependencies 'pytest'.
+
+2. Removed *pyproject.toml* line 48 comment.
+---
