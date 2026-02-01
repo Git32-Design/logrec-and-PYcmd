@@ -1,23 +1,22 @@
 [build-system]
-requires = ["setuptools >= 77.0.3"]
+requires = ["setuptools >= 77.0.3", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "lrapc"
+name = "LogrecAndPYcmd"
+description = "logrec: A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use \"logging\" library. I know, My lib is sucks, But I well publish it to github. PYcmd: This program is a command prompt tool for managing files."
 version = "3.7.3"
-description = "logrec: A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use \"logging\" library. I know, My lib is sucks, But I well publish it to github. PYcmd: A simple command line tool framework for python, Easy to use, Just like click, But more simple."
-requires-python = ">= 3.8"
+requires-python = ">= 3.8" 
 authors = [
     {name = "Git32-Design", email = "git32mail@qq.com"}
 ]
 license = "MIT AND (Apache-2.0 OR BSD-3-Clause)"
 readme = "About logrec and PYcmd.md"
-keywords = ["log", "logger", "recording", "search", "management", "file", "logging", "debug", "PyCmd", "Git32"]
+keywords = ["log", "logger", "recording", "search", "management", "file", "logging", "debug", "custom cmd"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Intended Audience :: System Administrators",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
@@ -31,7 +30,9 @@ classifiers = [
     "Topic :: System :: Systems Administration",
     "Topic :: Utilities",
 ]
-license-files = ["LICENSE"]
+dependencies = [
+    
+]   
 [project.urls]
 Homepage = "https://github.com/Git32-Design/logrec-and-PYcmd"
 Documentation = "https://readthedocs.org"
@@ -42,3 +43,6 @@ MyHomepage = "https://github.com/Git32-Design"
 DOWNLOAD = "https://github.com/Git32-Design/logrec-and-PYcmd/releases"
 [project.optional-dependencies]
 test = ["pytest >= 7.0"]
+[tool.setuptools.packages.find]
+# 明确指定要包含的包名
+include = ["PYcmd", "logrec"]

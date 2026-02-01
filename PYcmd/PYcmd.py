@@ -12,14 +12,6 @@
     Developing language : Python 3.13.0
     Licence : MIT License
     Description : This program is a command prompt tool for managing files.
-    It allows you to read, write, create, delete, list, copy, rename, get info,
-    create directory, remove directory, and compare files.
-    It also allows you to generate random numbers, get the current time and date,
-    and get the current path.
-    It also allows you to record logs.
-    It also allows you to calculate.
-    It also allows you to get the current path.
-    This program using a custom lib, It's "logrec" lib, If you want to use this lib in everyday, You want to copy "logrec" lib's folder to "C:/Users/Administrator/AppData/Local/Packages/PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0/LocalCache/local-packages/Python313/site-packages"
 """
 
 # import "os" lib to manage file  
@@ -32,8 +24,10 @@ import random
 import time
 # import "pathlib" lib to get current path
 import pathlib
+# import "ast" and "operator" lib to calculate math expression
 import ast
 import operator as _operator
+# import "sys" lib to get parent folder path for import custom module -- logrec
 import sys
 # Get parent folder path
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.absolute()))
@@ -346,7 +340,7 @@ def help() :
     print("- showt : show time of now or today")
     print("- out : output a text, like \"echo\" in cmd")
     print("- help : show this command help")
-    print("- credit : show credit list")
+    print("- credits : show credits list")
     print("- version : show version")
     print("- license : show license")
     print("- clear : clear screen")
@@ -431,25 +425,31 @@ def command(c):
             print(arg1)
         elif c == "version":
             print("This program is developing phase, version:Dev alpha 1.0.0 published version(have bug :3), New version is developing...")
-        elif c == "credit":
-            print("[Credit-\n MC:git32server \n github:Git32-Design \n QQmail:git32mail@qq.com] \n Thank codebuddy to help\n Thanks for you using this program!\n Author is a student, He's programming not professional, If you have some problem, Please contact me by QQmail or github, Thanks!")
+        elif c == "credits":
+            print("[Credits-\n MC:git32server \n github:Git32-Design \n QQmail:git32mail@qq.com] \n Thank codebuddy to help\n Thanks for you using this program!\n Author is a student, He's programming not professional, If you have some problem, Please contact me by QQmail or github, Thanks!")
         elif c == "license":
             print("""
-PYcmd - Python Command Prompt Tools
-Copyright (c) 2025 git32-programmer
+MIT License
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+Copyright (c) 2025 Git32-Design
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>{target="_blank"}.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 Contact: git32mail@qq.com
 GitHub: Git32-Design
@@ -466,7 +466,7 @@ def mainloop():
     print("Copyright[C] platform=Windows | author=[Git32-Design]")
     logrec.log(path,f"args : mainloop, Result: PYcmd is running...")
     while True:       
-        cmd = input(f"this program running in {os.getcwd()}, now|input \"help\", it can help you!>")
+        cmd = input(f"this program running in {os.getcwd()}, now|input \"help\" to get command list > ")
         command(cmd.lower())
         if cmd == "exit" :
             break
@@ -474,7 +474,7 @@ def mainloop():
         
 def mainpack():
     mainloop()
-    print("PYcmd Dev alpha 1.0 .0\nExiting...\nThank you for using this program!")
+    print("PYcmd Dev alpha 1.0 .0\nExiting...\nThanks for you use this program!")
     logrec.log(path,f"args : mainpack, Result: PYcmd exit.")
     time.sleep(random.randint(2, 5))
 
@@ -512,7 +512,7 @@ def run_cli(argv=None):
     else:
         parser.print_help()
     
-if __name__ == "__main__":
+def cli_and_main():
     # if CLI args provided, run CLI; otherwise run interactive mainpack
     if len(sys.argv) > 1:
         run_cli(sys.argv[1:])
@@ -520,9 +520,11 @@ if __name__ == "__main__":
         mainpack()
     logrec.log(path,f"args : __main__, Result: Exit succesfully.")
 
+if __name__ == "__main__":
+    cli_and_main()
+
 # Requires: see ../requirements.txt for external packages used in tests/tools
-# If you want to watch more information, Please check my other account, Account name is in "credit".
+# If you want to watch more information, Please check my other account, Account name is in "credits" function.
 # At end, We want to update this program's lastest version, At that time, We will stop update.
-# It's OK, My dream is be a programmer...
 # Yes, It's start.
-# I'm learning of own. I'm researching python/C++/Markup language/mcfunction and other.
+# I'm learning on my own. I'm researching python/C++/Markup language/mcfunction and other.

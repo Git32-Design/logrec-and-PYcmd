@@ -19,7 +19,7 @@ import time # Get time to record logs.
 import json # Output json formation.
 import csv # Output with CSV.
 
-# I want to add some error in this lib.
+# I want to add some exceptions in this module.
 # 1.Path or file not found.
 class LRFileNotFoundError(Exception):
     def __init__(self, filename, path):
@@ -68,9 +68,9 @@ class InvalidTypeError(Exception):
         elif isinstance(obj, str)  and len(obj) < 256 :
             type_name = f"string path '{obj}'"
         else:
-            type_name = f"object of type '{type(obj.__name__)}'"
+            type_name = f"object of type '{type(obj).__name__}'"
         
-        message = f"INvalidTypeError: {type_name} is not supported, Error code[004]"
+        message = f"InvalidTypeError: {type_name} is not supported, Error code[004]"
         super().__init__(message)
 
 # No more :]

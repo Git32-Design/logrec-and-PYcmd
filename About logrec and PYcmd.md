@@ -82,21 +82,9 @@ git clone https://github.com/Git32-Design/logrec-and-PYcmd.git
 cd logrec-and-PYcmd
 ```
 
-2. **Install logrec library (optional):**
-```python
-# Option 1: Install to site-packages
-# Copy logrec folder to your Python site-packages directory
-
-# Option 2: Use directly
-# Import logrec from the local directory
-import sys
-sys.path.append('/path/to/logrec-and-PYcmd')
-import logrec
-```
-
-3. **Run PYcmd:**
+2. **From PyPI install:**
 ```bash
-python PYcmd/PYcmd.py
+pip install LogrecAndPYcmd
 ```
 
 ## 📁 Repository Structure
@@ -121,12 +109,17 @@ logrec-and-PYcmd/              # Main repository folder
 |   |-- tests/                 # Tests of PYcmd
 |   |   |__ test-PYcmd         # Test script
 │   |-- PYcmd.py               # Main command tool implementation
+|   |-- __init__.py            # Library initialization and metadata
+|   |-- PYcmd log record.log   # PYcmd to record log here 
 |   |__ About PYcmd.md         # Detailed PYcmd documentation
-|-- LICENSE                    # Project license
+|-- LICENSE                    # Project license, using MIT and GPLv3
 |-- .gitignore                 # Git ignore rules
 |-- About logrec and PYcmd.md  # This file - project overview
 |-- requirements.txt           # This repository's requirement modules
-|__ Update msgs.md             # This repository every update informations
+|-- Update msgs.md             # This repository every update informations
+|-- README.md                  # This repository's README, others are in About
+|-- pyproject.toml             # This repository's pyproject.toml, help to publish
+|__ .readthedocs.yml           # To publish docs on readthedocs
 ```
 
 ## 🔗 Integration
@@ -141,17 +134,16 @@ PYcmd uses logrec internally for all operation logging:
 ## 📋 Version Information
 
 ### Current Versions
-- **logrec**: Release 3.3.2
-- **PYcmd**: Dev Alpha 1.0.0
-- **Project Status**: Development
+- **logrec**: Release 3.7.3
+- **PYcmd**: Release 2.1.1
+- **Project Status**: Release
 
-### Development Status
-Both tools are currently in alpha development phase:
-- ✅ Core functionality implemented
-- ✅ Basic testing completed
-- 🔄 Feature development ongoing
-- 📋 Documentation in progress
-- 🐛 Bug fixes and improvements
+### Release Status
+- [x] Stable and production-ready
+- [x] Published on PyPI
+- [x] Comprehensive documentation available
+- [x] Tested and verified
+- [x] Continuous integration and testing
 
 ## 🎯 Use Cases
 
@@ -193,7 +185,7 @@ Both tools are currently in alpha development phase:
 
 This project uses dual licensing:
 - **logrec**: MIT License
-- **PYcmd**: GNU General Public License v3.0
+- **PYcmd**: MIT License
 
 See individual LICENSE files for details.
 
@@ -228,6 +220,7 @@ We welcome contributions! Here's how you can help:
 - Steam : Git32-Games *In steam, You can call me "Git32Play"*
 - Netease minecraft : Git32Design__ *I haven't money to buy release, But netease make me happy, You can call me "git32mc"*
 - Project URL: [Into main page for see updates](https://github.com/Git32-Design/logrec-and-PYcmd)
+- PyPI project: [LogrecAndPYcmd](https://pypi.org/project/LogrecAndPYcmd/)
 
 ## 🙏 Acknowledgments
 

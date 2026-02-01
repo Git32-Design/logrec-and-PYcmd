@@ -36,7 +36,7 @@ from .logrec import (\
 )
 
 # Module metadata (PEP 396 compliant)
-__version__ = "3.3.2"
+__version__ = "3.7.3"
 __author__ = "Git32-Design"
 __author_email__ = "git32mail@qq.com"
 __license__ = "MIT"
@@ -88,14 +88,14 @@ __doc__ = """
     Code lib : logrec
     Fill name : Log Recorder
     Author : Git32-Design
-    Version : Alpha 1.1.1
+    Version : Rel 3.7.3
     create at : 2025/11/8
-    lastest update : 2025/12/9
+    lastest update : 2026/1/31
     Used lib : os(Operating system)|time(Time)
     IDE : Visual Studio Code
     Developing language : Python 3.13.0
     Licence : MIT License
-    Description : A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use "logging" library. I know, My lib is sucks, But I well publish it to github.
+    Description : A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use "logging" library. I know, My lib is sucks, But I well publish it to github. 
 """
 
 
