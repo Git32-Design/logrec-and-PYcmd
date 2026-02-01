@@ -474,7 +474,7 @@ def mainloop():
         
 def mainpack():
     mainloop()
-    print("PYcmd Dev alpha 1.0 .0\nExiting...\nThanks for you use this program!")
+    print("PYcmd Release 2.1.1\nExiting...\nThanks for you use this program!")
     logrec.log(path,f"args : mainpack, Result: PYcmd exit.")
     time.sleep(random.randint(2, 5))
 

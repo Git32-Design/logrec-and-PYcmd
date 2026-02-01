@@ -98,13 +98,19 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 
 2. *netease* to *Netease*.
 
-## III.📄 Version number fix for *Update msgs.md*
+## III.📄 Version number fix for *Update msgs.md* and *PYcmd.py*
 
-1. *3.3.2* to *3.7.3*
+1. Update msgs: *3.3.2* to *3.7.3*
 
-## IV.Setup.py and pyproject.toml fix
+2. PYcmd.py: *Dev Alpha 1.0.0* to *Release 2.1.1*
+
+## IV.🔗 Setup.py and pyproject.toml fix
 
 1. Deleted __setup.py__ and __pyproject.toml__ dependencies 'pytest'.
 
 2. Removed *pyproject.toml* line 48 comment.
+
+## V.📄 PYcmd log
+
+1. Clear PYcmd's log texts.
 ---
