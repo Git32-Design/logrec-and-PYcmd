@@ -86,11 +86,13 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 
 ## 🚀 Update fast report
 
-## I.🔧 logrec \_\_init\_\_ change report
+## I.🔧 change \_\_init\_\_ of logrec and PYcmd 
 
-1. function name *fatal* fix to __crit__.
+1. logrec:function name *fatal* fix to __crit__.
 
-2. Added custom exception in init program.
+2. logrec:Added custom exception in init program.
+
+3. PYcmd:Removed parent package invalid import.
 
 ## II.❌ PYcmd english and proper nouns fix
 
