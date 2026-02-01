@@ -1,8 +1,5 @@
-[2026-01-31 21:50:57] Normal log : args : mainloop, Result: PYcmd is running...
-[2026-01-31 21:51:04] Normal log : args : help, Result: Outputed command list.
-[2026-01-31 21:51:31] Normal log : args : mainpack, Result: PYcmd exit.
-[2026-01-31 21:51:36] Normal log : args : __main__, Result: Exit succesfully.
-[2026-01-31 21:54:42] Normal log : args : mainloop, Result: PYcmd is running...
-[2026-01-31 21:54:52] Normal log : args : calc 1+1, Result: Calculating expression : 1+1, Result is : 2.
-[2026-01-31 22:14:28] Normal log : args : mainpack, Result: PYcmd exit.
-[2026-01-31 22:14:30] Normal log : args : __main__, Result: Exit succesfully.
+[2026-02-01 12:26:28] Normal log : args : calc cos(1), Result: Calculating expression : cos(1), Result is : 0.5403023058681397.
+[2026-02-01 12:26:42] Normal log : args : help, Result: Outputed command list.
+[2026-02-01 12:28:40] Normal log : args : clear, Result: Screen cleared.
+[2026-02-01 12:28:40] Normal log : args : mainloop, Result: PYcmd is running...
+[2026-02-01 12:28:43] Normal log : args : help, Result: Outputed command list.

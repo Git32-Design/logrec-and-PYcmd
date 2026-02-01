@@ -424,9 +424,9 @@ def command(c):
             arg1 = input("input \"text\" arg ->")
             print(arg1)
         elif c == "version":
-            print("This program is developing phase, version:Dev alpha 1.0.0 published version(have bug :3), New version is developing...")
+            print("This program is a release version, version: 2.1.1 published version(has some bugs :3), New version is developing...")
         elif c == "credits":
-            print("[Credits-\n MC:git32server \n github:Git32-Design \n QQmail:git32mail@qq.com] \n Thank codebuddy to help\n Thanks for you using this program!\n Author is a student, He's programming not professional, If you have some problem, Please contact me by QQmail or github, Thanks!")
+            print("[Credits-\n MC:Git32Design_ \n github:Git32-Design \n QQmail:git32mail@qq.com] \n Thanks Codebuddy to help\n Thanks for you using this program!\n Author is a student, He's programming not professional, If you have some problem, Please contact me by QQmail or Github, Thanks!")
         elif c == "license":
             print("""
 MIT License
@@ -463,7 +463,7 @@ GitHub: Git32-Design
         print(f"Checking args data or running function have some error, The author well fix this error, Some error messages : {e}")
         
 def mainloop():
-    print("Copyright[C] platform=Windows | author=[Git32-Design]")
+    print("Copyright (c) 2025 Git32-Design platform=Windows | author=[Git32-Design]")
     logrec.log(path,f"args : mainloop, Result: PYcmd is running...")
     while True:       
         cmd = input(f"this program running in {os.getcwd()}, now|input \"help\" to get command list > ")
