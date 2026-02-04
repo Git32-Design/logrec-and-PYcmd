@@ -1,0 +1,40 @@
+==============================================
+    PROJECT IDENTIFIERS
+    LogrecAndPYcmd - Original Work Protection
+==============================================
+
+Copyright (c) 2025-2026 Git32-Design
+Licensed under MIT License
+
+Package Import Names:
+    • logrec
+    • PYcmd
+
+Current Version:
+    • logrec: Release 4.8.5
+    • PYcmd: Release 2.1.1
+
+Authors:
+    1. Git32-Design (git32mail@qq.com)
+    2. Tencent Cloud Codebuddy (AI Assistant)
+
+Official Distribution:
+    • GitHub: https://github.com/Git32-Design/logrec-and-PYcmd
+    • PyPI: https://pypi.org/project/LogrecAndPYcmd/
+    • PyPI User: https://pypi.org/user/Git32-Design/
+
+Documentation:
+    • Update msgs.md (Version History)
+    • README.md (User Guide)
+    • LICENSE (MIT License)
+
+==============================================
+⚠️  NOTICE / 声明
+==============================================
+While this project is MIT licensed, we kindly 
+ask users to credit the original author when 
+using or redistributing this work.
+
+本项目采用MIT许可证，但我们希望使用者在使用或
+再分发时注明原作者及原项目地址。
+==============================================

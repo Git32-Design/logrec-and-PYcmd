@@ -172,7 +172,7 @@ PYcmd uses logrec internally for all operation logging:
 - **PYcmd**: Python standard library (os, math, random, time, pathlib) + logrec
 
 ### Compatibility
-- **Python**: 3.10+ (recommended 3.13)
+- **Python**: >= 3.8 (recommended 3.13)
 - **Operating System**: Cross-platform (Windows, Linux, macOS)
 - **Memory Usage**: Lightweight, minimal footprint
 
@@ -234,6 +234,7 @@ We welcome contributions! Here's how you can help:
 - **Python Community**: For excellent documentation and examples
 - **GitHub Community**: For hosting and collaboration tools
 - **Open Source Contributors**: For inspiration and best practices
+- **PyPI Python Package Index**: For easy installation of pip
 
 ## 🚀 Roadmap
 

@@ -11,3 +11,4 @@ mkdocs:
 python:
   install:
     - requirements: requirements.txt
+    - dev-requirements: dev-requirements.txt

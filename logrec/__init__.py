@@ -65,7 +65,7 @@ __project_urls__ = {
     "Bug Tracker": "https://github.com/Git32-Design/logrec-and-PYcmd/issues",
 }
 __classifiers__ = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 3 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: System Administrators",
     "License :: OSI Approved :: MIT License",

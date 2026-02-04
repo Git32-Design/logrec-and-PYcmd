@@ -1,6 +1,8 @@
-logrec Library Update Message
+# Logrec-And-PYcmd Update report ![Static Badge](https://img.shields.io/badge/Account-Git32Design__-red?logo=Bilibili)
 
 Version Release 3.3.2 (2026-01-17)  *Version error, must be 3.7.3(2026-01-17)*
+
+![Static Badge](https://img.shields.io/badge/Update-Fast%20report-blue?logo=RefinedGithub)
 
 🚀 Overview
 The logrec library provides a lightweight and intuitive solution for log recording and management in Python applications. Designed as a simpler alternative to Python's built-in logging module, it offers essential logging functionality with an emphasis on ease of use and file-based log storage.
@@ -74,13 +76,19 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 
 ## 📞 Contact
 
-- Author: Git32-Design
-- Developer page : [User page](https://github.com/Git32-Design)
-- Email: git32mail@qq.com
-- Steam : Git32-Games *In steam, You can call me "Git32stm"*
-- Netease minecraft : Git32Design_ *I haven't money to buy release, But netease make me happy, You can call me "Git32"*
-- Project URL: [Into main page for see updates](https://github.com/Git32-Design/logrec-and-PYcmd)
-- PyPI project: [LogrecAndPYcmd](https://pypi.org/project/LogrecAndPYcmd/)
+- Author: Git32-Design  ![Static Badge](https://img.shields.io/badge/author-Git32-c5c5ff?logo=github)
+
+- Developer page : [User page](https://github.com/Git32-Design)  ![Static Badge](https://img.shields.io/badge/Dev-Github-blue?logo=SuperUser)
+
+- Email: git32mail@qq.com  ![Static Badge](https://img.shields.io/badge/Mail-QQ-light_blue?logo=QQ)
+
+- Steam : Git32-Games *In steam, You can call me "Git32stm"*  ![Static Badge](https://img.shields.io/badge/Git32-Steam-lightblue?logo=Steam)
+
+- Netease minecraft : Git32Design_ *I haven't money to buy release, But netease make me happy, You can call me "Git32"*  ![Static Badge](https://img.shields.io/badge/Netease-MC-yellow?)
+
+- Project URL: [Into main page for see updates](https://github.com/Git32-Design/logrec-and-PYcmd)   ![Static Badge](https://img.shields.io/badge/About-Project-skyblue?logo=github)
+
+- PyPI project: [LogrecAndPYcmd](https://pypi.org/project/LogrecAndPYcmd/) ![Static Badge](https://img.shields.io/badge/PyPI-LogrecAndPYcmd-brightgreen?logo=PyPI)
 ---
 # Version Release 4.8.4 (2026-01-31)
 
@@ -143,6 +151,42 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 ## V.📊 Version tracking
 
 1. Repository update times(Repo datas version): 68 to 70
+
+# Version Release 4.8.6 (2026-02-04)
+
+## 🚀 Update fast report, very faster!!
+
+## I.📦 Dependencies management
+
+1. Created `dev-requirements.txt` for development dependencies.
+
+2. Updated `requirements.txt` to remove unnecessary dependencies.
+
+## II.📄 Documentation updates
+
+1. `.readthedocs.yaml`: Updated configuration for Read the Docs documentation build.
+
+2. `Update msgs.md`: Continued documentation of version changes and updates.
+
+## III.🔧 Module improvements
+
+1. logrec `__init__.py`: Version metadata and import structure refinements.
+
+2. PYcmd `__init__.py`: Version metadata and module information updates.
+
+## IV.📊 Project configuration
+
+1. `pyproject.toml`: Updated project metadata and version information.
+
+2. `README.md`: Documentation improvements and formatting updates.
+
+## V.📊 Version tracking
+
+1. Repository update times(Repo datas version): 70 to 72
+
+## VI.📄 Original project identifiers
+
+1. `Identifiers.txt` Included important information of this project.
 ---
 
-# Repository commit version=70
+# Format version=72

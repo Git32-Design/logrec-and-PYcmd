@@ -1,0 +1,2 @@
+pytest>=7.0.0
+# This is test requirement file for development. No more :]

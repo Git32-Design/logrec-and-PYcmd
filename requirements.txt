@@ -1,3 +1,2 @@
-pytest>=7.0
-# No other external runtime dependencies; stdlib used for main features.
-# Add additional test/dev tools below as needed.
+# There no running requirements.
+# Please check dev-requirements.txt for development requirements.
