@@ -14,7 +14,7 @@
     Description : A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use "logging" library. I know, My lib is sucks, But I well publish it to github.
 """
 
-from logrec import (\
+from .logrec import (\
     
     # Log recording functions
     log, tip, warn, err, crit,

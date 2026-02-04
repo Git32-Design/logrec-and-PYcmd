@@ -116,3 +116,33 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 
 1. Clear PYcmd's log texts.
 ---
+# Version Release 4.8.5 (2026-02-04)
+
+## 🚀 Update fast report
+
+## I.🔧 Import statements fix for logrec and PYcmd
+
+1. logrec: Changed *from logrec import* to *from .logrec import* for relative import.
+
+2. PYcmd: Changed *from PYcmd import* to *from .PYcmd import* for relative import.
+
+## II.📄 Log file cleanup
+
+1. Cleared PYcmd log record.log file contents.
+
+## III.📝 Documentation updates
+
+1. README.md: Removed repository update times line at the end.
+
+2. Update msgs.md: Added repository update times section.
+
+## IV.🧪 Test file formatting
+
+1. PYcmd/tests/test_PYcmd.py: Removed newline at end of file.
+
+## V.📊 Version tracking
+
+1. Repository update times(Repo datas version): 68 to 70
+---
+
+# Repository commit version=70

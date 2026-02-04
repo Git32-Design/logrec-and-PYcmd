@@ -14,7 +14,7 @@
     Description : This program is a command prompt tool for managing files.
 """
 
-from PYcmd import (\
+from .PYcmd import (\
     # Valid commands
     read, write, create, delete, listdir, copy,\
     rename, info, mkdir, rmdir, compare, pwd,\
