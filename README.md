@@ -259,7 +259,7 @@ We welcome contributions! Here's how you can help:
 ## 💡 Getting Help
 
 ### Documentation
-- Read the individual `About*.md` files for detailed information
+- Read the individual `About*.md` and `README.md` files for detailed information
 - Check code comments for implementation details
 - Review function docstrings for usage examples
 

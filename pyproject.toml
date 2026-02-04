@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "LogrecAndPYcmd"
 description = "logrec: A quick record log's lib, Can search log file, And record(Or write) logs to a file. It's easy, Please use \"logging\" library. I know, My lib is sucks, But I well publish it to github. PYcmd: This program is a command prompt tool for managing files."
-version = "4.8.5"
+version = "5.8.6"
 requires-python = ">= 3.8" 
 authors = [
     {name = "Git32-Design", email = "git32mail@qq.com"}
