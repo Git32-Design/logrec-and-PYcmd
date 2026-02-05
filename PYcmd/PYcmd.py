@@ -4,9 +4,9 @@
     Program : PYcmd
     Fill name : Python Command prompt tool
     Author : Git32-Design
-    Version : Dev Alpha 1.0.0
+    Version : Release 2.1.1
     create at : 2025/11/8
-    lastest update : 2025/11/8
+    lastest update : 2026/2/6
     Used lib : os(Managing files)|math(Calculating)|random(Generate random number)|time(Get time string)|pathlib(Get current path)|logrec(Custom lib, Managing logs)
     Developing at : Visual Studio Code
     Developing language : Python 3.13.0

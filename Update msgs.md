@@ -189,4 +189,22 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 1. `Identifiers.txt` Included important information of this project.
 ---
 
-# Format version=72
+# Version Release 5.8.7 | Fixed Bugs and tiny adds
+
+# I.📄 `Identifier.txt` Object update
+
+1. Added `Package Version` object, tracked PyPI version.
+
+2. Append project platform `PyPI`.
+
+# II.📊 README Track
+
+1. In `pyproject.toml`, `About logrec-and-PYcmd.md` is deleted. Fixed display to `README.md`
+
+# III.📄 `PYcmd` Header comment fix
+
+1. `Dev Alpha 1.0.0` To `Release 2.1.1`.
+
+---
+
+# Format version=73
