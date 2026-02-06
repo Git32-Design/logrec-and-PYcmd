@@ -1,0 +1,15 @@
+[2026-02-06 10:20:41] Normal log : args : mainloop, Result: PYcmd is running...
+[2026-02-06 10:20:45] Normal log : args : help, Result: Outputed command list.
+[2026-02-06 10:22:02] Normal log : args : help, Result: Outputed command list.
+[2026-02-06 10:22:05] Normal log : args : clear, Result: Screen cleared.
+[2026-02-06 10:22:05] Normal log : args : mainloop, Result: PYcmd is running...
+[2026-02-06 10:22:10] Normal log : args : help, Result: Outputed command list.
+[2026-02-06 10:22:20] Normal log : args : listdir E:, Result: Running function successfuly.
+[2026-02-06 10:23:23] Error log : args : listdir ., Result: Path not found | No permission to access or other error. Err : 'gbk' codec can't encode character '\U0001f4c1' in position 2: illegal multibyte sequence
+[2026-02-06 10:23:45] Normal log : args : listdir ., Result: Listed 6 directories and 9 files successfully.
+[2026-02-06 10:23:57] Normal log : args : listdir ., Result: Listed 6 directories and 9 files successfully.
+[2026-02-06 10:23:57] Normal log : args : listdir logrec, Result: Listed 2 directories and 3 files successfully.
+[2026-02-06 10:24:07] Normal log : args : mainpack, Result: PYcmd exit.
+[2026-02-06 10:24:12] Normal log : args : mainpack, Result: PYcmd exit.
+[2026-02-06 10:24:16] Normal log : args : __main__, Result: Exit succesfully.
+[2026-02-06 10:24:57] Normal log : args : clear, Result: Screen cleared.

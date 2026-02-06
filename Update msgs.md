@@ -208,3 +208,55 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 ---
 
 # Format version=73
+
+---
+
+# Version Release 5.8.8 (2026-02-06) | Enhanced PYcmd Features
+
+## 🚀 Update fast report
+
+## I.✨ Enhanced `listdir` command
+
+1. **Directory and file differentiation**: Added visual distinction between directories and files.
+   - Directories marked as `[DIR]` with trailing `/`
+   - Files marked as `[FILE]` with size information
+
+2. **File size display**: Automatic formatting with appropriate units (B, KB, MB, GB).
+
+3. **Categorized output**: Separated display sections for directories and files.
+
+4. **Statistics**: Added count summary showing total directories and files.
+
+5. **Improved formatting**: Added visual separators and tree-style structure for better readability.
+
+6. **Windows compatibility**: Used ASCII characters instead of emoji to avoid encoding issues.
+
+## II.🐛 Fixed `clear` command bug
+
+1. Removed recursive `mainpack()` call that caused program to restart after clearing screen.
+
+2. Changed behavior to only clear screen and redisplay header without restarting the main loop.
+
+## III.🐛 Fixed `exit` command issue
+
+1. Resolved issue where `exit` command would display exit message twice.
+
+2. Ensured program exits cleanly without restarting the main loop.
+
+## IV.📝 Documentation improvements
+
+1. Updated `README.md` Repository Structure section to reflect actual project files.
+
+2. Removed non-existent files from documentation (test logs, obsolete files).
+
+3. Added build artifacts (`dist/`, `LogrecAndPYcmd.egg-info/`) to structure documentation.
+
+4. Updated help text for `listdir` command to reflect new enhanced features.
+
+## V.📊 Version tracking
+
+1. Repository update times (Repo datas version): 73 to 74
+
+---
+
+# Format version=74

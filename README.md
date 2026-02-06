@@ -90,36 +90,41 @@ pip install LogrecAndPYcmd
 ## 📁 Repository Structure
 
 ```
-logrec-and-PYcmd/              # Main repository folder
-|-- .github/                   # Github settings
-|   |-- workflows/             # To publish package
-|   |   |-- python-package.yml # A setting of publish
-|   |   |__ python-publish.yml # Publish messages
-|-- logrec/                    # Log Recorder Library
-|   |-- tests/                 # Test of logrec
-|   |   |-- test_logrec.py     # Test script
-|   |   |-- c.log              # Test logs
-|   |   |-- g.log              # Test logs
-|   |   |-- s.log              # Test logs
-|   |   |__ t.log              # Test logs
-|   |-- __init__.py            # Library initialization and metadata
-|   |-- logrec.py              # Core logging functionality
-│   |__ About logrec.md        # Detailed logrec documentation
-|-- PYcmd/                     # Python Command Tool
-|   |-- tests/                 # Tests of PYcmd
-|   |   |__ test-PYcmd         # Test script
-│   |-- PYcmd.py               # Main command tool implementation
-|   |-- __init__.py            # Library initialization and metadata
-|   |-- PYcmd log record.log   # PYcmd to record log here 
-|   |__ About PYcmd.md         # Detailed PYcmd documentation
-|-- LICENSE                    # Project license, using MIT and GPLv3
-|-- .gitignore                 # Git ignore rules
-|-- About logrec and PYcmd.md  # This file - project overview
-|-- requirements.txt           # This repository's requirement modules
-|-- Update msgs.md             # This repository every update informations
-|-- README.md                  # This repository's README, others are in About
-|-- pyproject.toml             # This repository's pyproject.toml, help to publish
-|__ .readthedocs.yml           # To publish docs on readthedocs
+logrec-and-PYcmd/                     # Main repository folder
+|-- .github/                          # GitHub settings
+|   |__ workflows/                    # CI/CD workflows
+|       |-- python-package.yml        # Package testing workflow
+|       |__ python-publish.yml        # PyPI publishing workflow
+|-- logrec/                           # Log Recorder Library
+|   |-- tests/                        # Tests for logrec
+|   |   |__ test_logrec.py            # Unit test script
+|   |-- __init__.py                   # Library initialization and metadata
+|   |-- logrec.py                     # Core logging functionality
+|   |__ About logrec.md               # Detailed logrec documentation
+|-- PYcmd/                            # Python Command Tool
+|   |-- tests/                        # Tests for PYcmd
+|   |   |__ test_PYcmd.py             # Unit test script
+|   |-- __init__.py                   # Library initialization and metadata
+|   |-- PYcmd.py                      # Main command tool implementation
+|   |__ About PYcmd.md                # Detailed PYcmd documentation
+|-- dist/                             # Distribution packages (generated)
+|   |-- logrecandpycmd-5.8.7-py3-none-any.whl  # Wheel package
+|   |__ logrecandpycmd-5.8.7.tar.gz            # Source distribution
+|-- LogrecAndPYcmd.egg-info/          # Package metadata (generated)
+|   |-- dependency_links.txt          # It's air :[
+|   |-- PKG-INFO                      # Package information, included README.md
+|   |-- requires.txt                  # Only pytest
+|   |-- SOURCES.txt                   # Package sources
+|   |-- top_level.txt                 # Package import names
+|-- .gitignore                        # Git ignore rules
+|-- .readthedocs.yaml                 # ReadTheDocs configuration
+|-- dev-requirements.txt              # Development dependencies
+|-- Identifiers.txt                   # Project identifiers
+|-- LICENSE                           # MIT License
+|-- pyproject.toml                    # Project configuration and build system
+|-- README.md                         # This file - project documentation
+|-- requirements.txt                  # Runtime dependencies
+|__ Update msgs.md                    # Version update history and changelog
 ```
 
 ## 🔗 Integration
@@ -135,7 +140,8 @@ PYcmd uses logrec internally for all operation logging:
 
 ### Current Versions
 - **logrec**: Release 3.7.3
-- **PYcmd**: Release 2.1.1
+- **PYcmd**: Release 2.1.2
+- **Package**: Release 5.8.8
 - **Project Status**: Release
 
 ### Release Status

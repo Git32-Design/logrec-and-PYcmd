@@ -4,9 +4,9 @@
     Code lib : PYcmd
     Fill name : Python Command Prompt
     Author : Git32-Design
-    Version : Rel 2.1.1
+    Version : Rel 2.1.2
     create at : 2025/11/8
-    lastest update : 2026/1/31
+    lastest update : 2026/2/6
     Used lib : os(Operating system)|math(Mathematical functions)|random(Random number)|time(Time)|pathlib(Path handling)|ast(Abstract syntax trees)|operator(Operators)|sys(System)|logrec(Log recording)
     IDE : Visual Studio Code
     Developing language : Python 3.13.0
@@ -25,7 +25,7 @@ from .PYcmd import (\
 )
 
 # Module metadata (PEP 396 compliant)
-__version__ = "4.8.5"
+__version__ = "5.8.8"
 __author__ = "Git32-Design"
 __author_email__ = "git32mail@qq.com"
 __license__ = "MIT"

@@ -4,7 +4,7 @@
     Program : PYcmd
     Fill name : Python Command prompt tool
     Author : Git32-Design
-    Version : Release 2.1.1
+    Version : Release 2.1.2
     create at : 2025/11/8
     lastest update : 2026/2/6
     Used lib : os(Managing files)|math(Calculating)|random(Generate random number)|time(Get time string)|pathlib(Get current path)|logrec(Custom lib, Managing logs)
@@ -108,11 +108,59 @@ def delete(filepath):
 
 def listdir(directory="."):  
     try:  
-        files = os.listdir(directory)  
-        print(f"Files in '{directory}':")  
-        for file in files:  
-            print(f"- {file}")  
-        logrec.log(path,f"args : listdir {directory}, Result: Running function successfuly.")
+        items = os.listdir(directory)  
+        if not items:
+            print(f"Directory '{directory}' is empty.")
+            logrec.log(path,f"args : listdir {directory}, Result: Directory is empty.")
+            return
+            
+        # Separate directories and files
+        directories = []
+        files = []
+        
+        for item in items:
+            item_path = os.path.join(directory, item)
+            if os.path.isdir(item_path):
+                directories.append(item)
+            else:
+                files.append(item)
+        
+        # Sort alphabetically
+        directories.sort()
+        files.sort()
+        
+        # Display results
+        print(f"\nContents of '{directory}':")
+        print("=" * 60)
+        
+        if directories:
+            print(f"\n[Directories] ({len(directories)}):")
+            for dir_name in directories:
+                print(f"  |-- [DIR]  {dir_name}/")
+        
+        if files:
+            print(f"\n[Files] ({len(files)}):")
+            for file_name in files:
+                file_path = os.path.join(directory, file_name)
+                try:
+                    size = os.path.getsize(file_path)
+                    # Format file size
+                    if size < 1024:
+                        size_str = f"{size} B"
+                    elif size < 1024 * 1024:
+                        size_str = f"{size / 1024:.2f} KB"
+                    elif size < 1024 * 1024 * 1024:
+                        size_str = f"{size / (1024 * 1024):.2f} MB"
+                    else:
+                        size_str = f"{size / (1024 * 1024 * 1024):.2f} GB"
+                    print(f"  |-- [FILE] {file_name:<40} ({size_str})")
+                except:
+                    print(f"  |-- [FILE] {file_name}")
+        
+        print("=" * 60)
+        print(f"Total: {len(directories)} directories, {len(files)} files\n")
+        
+        logrec.log(path,f"args : listdir {directory}, Result: Listed {len(directories)} directories and {len(files)} files successfully.")
     except Exception as e:  
         print(f"Error listing directory: {e}")  
         logrec.err(path,f"args : listdir {directory}, Result: Path not found | No permission to access or other error. Err : {e}")
@@ -326,7 +374,7 @@ def help() :
     print("- copy : copy file to other path")
     print("- rename : rename file")
     print("- compare : compare the contents of two files")
-    print("- listdir : list the files and subdirectories in the directory")
+    print("- listdir : list files and directories with sizes (enhanced)")
     print("- mkdir : create an new direction")
     print("- rmdir : remove an empty direction")
     print("- pwd : print working direction")
@@ -350,7 +398,8 @@ def help() :
 def clear():  
     os.system('cls' if os.name == 'nt' else 'clear')
     logrec.log(path,f"args : clear, Result: Screen cleared.")
-    mainpack()
+    # Show header again after clearing
+    print("Copyright (c) 2025 Git32-Design platform=Windows | author=[Git32-Design]")
 
 def command(c):
     try : 
@@ -424,7 +473,7 @@ def command(c):
             arg1 = input("input \"text\" arg ->")
             print(arg1)
         elif c == "version":
-            print("This program is a release version, version: 2.1.1 published version(has some bugs :3), New version is developing...")
+            print("This program is a release version, version: 2.1.2 published version, New version is developing...")
         elif c == "credits":
             print("[Credits-\n MC:Git32Design_ \n github:Git32-Design \n QQmail:git32mail@qq.com] \n Thanks Codebuddy to help\n Thanks for you using this program!\n Author is a student, He's programming not professional, If you have some problem, Please contact me by QQmail or Github, Thanks!")
         elif c == "license":
@@ -474,7 +523,7 @@ def mainloop():
         
 def mainpack():
     mainloop()
-    print("PYcmd Release 2.1.1\nExiting...\nThanks for you use this program!")
+    print("PYcmd Release 2.1.2\nExiting...\nThanks for you use this program!")
     logrec.log(path,f"args : mainpack, Result: PYcmd exit.")
     time.sleep(random.randint(2, 5))
 
