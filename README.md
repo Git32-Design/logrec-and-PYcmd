@@ -108,8 +108,8 @@ logrec-and-PYcmd/                     # Main repository folder
 |   |-- PYcmd.py                      # Main command tool implementation
 |   |__ About PYcmd.md                # Detailed PYcmd documentation
 |-- dist/                             # Distribution packages (generated)
-|   |-- logrecandpycmd-5.8.7-py3-none-any.whl  # Wheel package
-|   |__ logrecandpycmd-5.8.7.tar.gz            # Source distribution
+|   |-- logrecandpycmd-5.8.8-py3-none-any.whl  # Wheel package
+|   |__ logrecandpycmd-5.8.8.tar.gz            # Source distribution
 |-- LogrecAndPYcmd.egg-info/          # Package metadata (generated)
 |   |-- dependency_links.txt          # It's air :[
 |   |-- PKG-INFO                      # Package information, included README.md

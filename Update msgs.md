@@ -257,6 +257,10 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 
 1. Repository update times (Repo datas version): 73 to 74
 
+## VI.📝 Structure fix
+
+1. `5.8.7` to `5.8.8`
+
 ---
 
 # Format version=74
