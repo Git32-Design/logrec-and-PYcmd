@@ -366,33 +366,32 @@ def showt():
     logrec.log(path,f"args : showt, Result: Getted formated time string.")
 
 def help() :
-    print("commands is below")
-    print("- read : read file and print file text")
-    print("- write : write text in file")
-    print("- create : create a file to a path")
-    print("- delete : remove a file")
-    print("- copy : copy file to other path")
-    print("- rename : rename file")
-    print("- compare : compare the contents of two files")
-    print("- listdir : list files and directories with sizes (enhanced)")
-    print("- mkdir : create an new direction")
-    print("- rmdir : remove an empty direction")
-    print("- pwd : print working direction")
-    print("- cd : change working direction")
-    print("- info : show file basic information")
-    print("- stats : show detailed file statistics")
-    print("- mathfunc : return math constants")
-    print("- calc : calculate math expression")
-    print("- rand : generate random integer number or random floating-point number")
-    print("- exit : exit pythonCMD program")
-    print("- showt : show time of now or today")
-    print("- out : output a text, like \"echo\" in cmd")
-    print("- help : show this command help")
-    print("- credits : show credits list")
-    print("- version : show version")
-    print("- license : show license")
-    print("- clear : clear screen")
-    print("I'll append more functions in the program(update)...")
+    print("PYcmd commands (type command + args in one line):")
+    print("-" * 50)
+    print("read <filepath>                    - Read file content")
+    print("write <filepath> <line> <pos> <content> - Write to file")
+    print("create <filename> <dirpath> <type> <text> - Create file")
+    print("delete <filepath>                  - Delete file")
+    print("copy <source> <dest>            - Copy file")
+    print("rename <filepath> <newname>        - Rename file")
+    print("compare <file1> <file2>         - Compare two files")
+    print("listdir [directory]             - List directory contents")
+    print("mkdir <dirpath> <dirname>       - Create directory")
+    print("rmdir <dirname>                 - Remove empty directory")
+    print("pwd                             - Print working directory")
+    print("cd <path>                       - Change directory")
+    print("info <filepath>                    - Show file info")
+    print("stats <filepath>                   - Show file statistics")
+    print("mathfunc <func>                 - Math constants (pi/tau/phi/e)")
+    print("calc <expression>                - Calculate expression")
+    print("rand <mode> <start> <end>       - Random number (int/float)")
+    print("showt                           - Show current time")
+    print("out <text>                      - Print text (like echo)")
+    print("-" * 50)
+    print("exit                            - Exit program")
+    print("clear                           - Clear screen")
+    print("credits / version / license / help - Info commands")
+    print("-" * 50)
     logrec.log(path,f"args : help, Result: Outputed command list.")
 
 def clear():  
@@ -401,84 +400,37 @@ def clear():
     # Show header again after clearing
     print("Copyright (c) 2025 Git32-Design platform=Windows | author=[Git32-Design]")
 
-def command(c):
-    try : 
-        if c == "help" :
-            help()
-        elif c == "read" :
-            arg1 = input("input \"filepath\" arg ->")
-            read(arg1)
-        elif c == "write" :
-            arg1 = input("input \"filepath\" arg ->")
-            arg2 = input("input \"line\" arg ->")
-            arg3 = input("input\"bitnum\" arg ->")
-            arg4 = input("input \"content\" arg ->")
-            write(arg1,arg2,arg3,arg4)
-        elif c == "create":
-            arg1 = input("input \"filename\" arg ->")
-            arg2 = input("input \"filepath\" arg ->")
-            arg3 = input("input \"type\" arg ->")
-            arg4 = input("input \"text\" arg ->")
-            create(arg1,arg2,arg3,arg4)
-        elif c == "delete":
-            arg1 = input("input \"filepath\" arg ->")
-            delete(arg1)
-        elif c == "listdir":
-            arg1 = input("input \"directory\" arg ->")
-            listdir(arg1)
-        elif c == "copy":
-            arg1 = input("input \"source\" arg ->")
-            arg2 = input("input \"destination\" arg ->")
-            copy(arg1,arg2)
-        elif c == "rename":
-            arg1 = input("input \"filepath\" arg ->")
-            arg2 = input("input \"new_name\" arg ->")
-            rename(arg1,arg2)
-        elif c == "info":
-            arg1 = input("input \"filepath\" arg ->")
-            info(arg1)
-        elif c == "mkdir":
-            arg1 = input("input \"dirpath\" arg ->")
-            arg2 = input("input \"dirname\" arg ->")
-            mkdir(arg1,arg2)
-        elif c == "rmdir":
-            arg1 = input("input \"dirname\" arg ->")
-            rmdir(arg1)
-        elif c == "compare":
-            arg1 = input("input \"file1\" arg ->")
-            arg2 = input("input \"file2\" arg ->")
-            compare(arg1,arg2)
-        elif c == "pwd":
-            pwd()
-        elif c == "cd":
-            arg1 = input("input \"path\" arg ->")
-            cd(arg1)
-        elif c == "stats":
-            arg1 = input("input \"filepath\" arg ->")
-            stats(arg1)
-        elif c == "mathfunc":
-            arg1 = input("input \"function\" arg ->")
-            math_func(arg1)
-        elif c == "calc":
-            arg1 = input("input \"expression\" arg ->")
-            calc(arg1)
-        elif c == "rand":
-            arg1 = input("input \"mode\" arg ->")
-            arg2 = int(input("input \"start\" arg ->"))
-            arg3 = int(input("input \"end\" arg ->"))
-            rand(arg1,arg2,arg3)
-        elif c == "showt":
-            showt()
-        elif c == "out":
-            arg1 = input("input \"text\" arg ->")
-            print(arg1)
-        elif c == "version":
-            print("This program is a release version, version: 2.1.2 published version, New version is developing...")
-        elif c == "credits":
-            print("[Credits-\n MC:Git32Design_ \n github:Git32-Design \n QQmail:git32mail@qq.com] \n Thanks Codebuddy to help\n Thanks for you using this program!\n Author is a student, He's programming not professional, If you have some problem, Please contact me by QQmail or Github, Thanks!")
-        elif c == "license":
-            print("""
-MIT License
+# Command handlers
+_COMMANDS = {
+    # No-arg commands
+    "pwd": (0, lambda: pwd()),
+    "showt": (0, lambda: showt()),
+    "clear": (0, lambda: clear()),
+    "help": (0, lambda: help()),
+    # One-arg commands
+    "read": (1, lambda a: read(a[0])),
+    "delete": (1, lambda a: delete(a[0])),
+    "rmdir": (1, lambda a: rmdir(a[0])),
+    "cd": (1, lambda a: cd(a[0])),
+    "stats": (1, lambda a: stats(a[0])),
+    "info": (1, lambda a: info(a[0])),
+    "mathfunc": (1, lambda a: math_func(a[0])),
+    "listdir": (1, lambda a: listdir(a[0] if a else ".")),
+    "out": (1, lambda a: print(" ".join(a))),
+    # Two-arg commands
+    "copy": (2, lambda a: copy(a[0], a[1])),
+    "rename": (2, lambda a: rename(a[0], a[1])),
+    "compare": (2, lambda a: compare(a[0], a[1])),
+    "mkdir": (2, lambda a: mkdir(a[0], a[1])),
+    # Multi-arg commands
+    "write": (4, lambda a: write(a[0], int(a[1]), int(a[2]), a[3])),
+    "create": (4, lambda a: create(a[0], a[1], a[2], a[3])),
+    "rand": (3, lambda a: rand(a[0], int(a[1]), int(a[2]))),
+    "calc": (-1, lambda a: calc(" ".join(a))),
+    # Info commands
+    "version": (0, lambda: print("This program is a release version, version: 2.1.2 published version, New version is developing...")),
+    "credits": (0, lambda: print("[Credits-\n MC:Git32Design_ \n github:Git32-Design \n QQmail:git32mail@qq.com] \n Thanks Codebuddy to help\n Thanks for you using this program!\n Author is a student, He's programming not professional, If you have some problem, Please contact me by QQmail or Github, Thanks!")),
+    "license": (0, lambda: print("""MIT License
 
 Copyright (c) 2025 Git32-Design
 
@@ -501,13 +453,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 Contact: git32mail@qq.com
-GitHub: Git32-Design
-        """)
-        elif c == "clear":
-            clear()
-        else :
-            if c != "exit" :
-                print("invalid command,please try other commands")
+GitHub: Git32-Design""")),
+    "exit": (0, lambda: None),
+}
+
+def command(c):
+    try:
+        parts = c.split()
+        if not parts:
+            return
+        cmd = parts[0].lower()
+        args = parts[1:]
+        
+        if cmd not in _COMMANDS:
+            print("invalid command, please try other commands")
+            return
+            
+        required_args, handler = _COMMANDS[cmd]
+        
+        if required_args != -1 and len(args) < required_args:
+            print(f"Usage: {cmd} <args>")
+            return
+            
+        handler(args)
     except Exception as e:
         print(f"Checking args data or running function have some error, The author well fix this error, Some error messages : {e}")
         
@@ -515,9 +483,9 @@ def mainloop():
     print("Copyright (c) 2025 Git32-Design platform=Windows | author=[Git32-Design]")
     logrec.log(path,f"args : mainloop, Result: PYcmd is running...")
     while True:       
-        cmd = input(f"this program running in {os.getcwd()}, now|input \"help\" to get command list > ")
-        command(cmd.lower())
-        if cmd == "exit" :
+        cmd = input(f"{os.getcwd()}> ")
+        command(cmd)
+        if cmd.strip().lower().startswith("exit"):
             break
         
         

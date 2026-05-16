@@ -113,28 +113,28 @@ def log(filepath, text) :
     check(filepath)
     Get = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     with open(filepath, "a+", encoding="utf-8") as target:
-        target.write(f"[{Get}] Normal log : {text}\n")
+        target.write(f"[{Get}] Info: {text}\n")
 
 # 2.Tips
 def tip(filepath, text) : 
     check(filepath)
     Get = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     with open(filepath, "a+", encoding="utf-8") as target:
-        target.write(f"[{Get}] Tips log : {text}\n")
+        target.write(f"[{Get}] Tips: {text}\n")
 
 # 3.Warning
 def warn(filepath, text) : 
     check(filepath)
     Get = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     with open(filepath, "a+", encoding="utf-8") as target:
-        target.write(f"[{Get}] Warning log : {text}\n")
+        target.write(f"[{Get}] Warning: {text}\n")
 
 # 4.Error
 def err(filepath, text) : 
     check(filepath)
     Get = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     with open(filepath, "a+", encoding="utf-8") as target:
-        target.write(f"[{Get}] Error log : {text}\n")
+        target.write(f"[{Get}] Error : {text}\n")
         
 # 5.Critical error
 def crit(filepath, text) : 

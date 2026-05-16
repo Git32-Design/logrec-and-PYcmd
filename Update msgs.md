@@ -207,8 +207,6 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 
 ---
 
-# Format version=73
-
 ---
 
 # Version Release 5.8.8 (2026-02-06) | Enhanced PYcmd Features
@@ -263,4 +261,52 @@ Thanks to the Python community for inspiration and guidance. Special recognition
 
 ---
 
-# Format version=74
+---
+
+# Version Release 5.9.0 (2026-05-16) | Improved PYcmd CLI Experience
+
+## 🚀 Update fast report
+
+## I.🐛 Fixed `write` command parameter type error
+
+1. Converted `arg2` and `arg3` from string to int using `int()` wrapper
+2. Fixed type mismatch issue when passing arguments to `write()` function
+
+## II.♻️ Refactored `command` function with dictionary mapping
+
+1. Replaced long `if-elif` chain with `_COMMANDS` dictionary
+2. Each command now stores: required argument count and handler lambda
+3. Reduced code from 100+ lines to ~60 lines
+4. Easier to add new commands in the future
+
+## III.✨ Improved CLI interaction with one-line command input
+
+1. Changed from multi-step input to single-line command syntax
+   - Before: `read` → prompt → `file.txt` → Enter
+   - After: `read file.txt`
+2. Updated `mainloop()` prompt to cleaner format
+3. Added parameter validation with usage hints
+4. Commands now support expressions like `calc 2 + 3 * 4`
+
+## IV.📝 Updated `help` command
+
+1. Rewrote help text to show new one-line usage format
+2. Added usage examples for each command
+3. Better organized layout with section dividers
+
+## V.📄 Git repository cleanup
+
+1. Removed tracked `.log` files from git index
+2. Added proper `.gitignore` entries for log files
+
+## VI.📊 Version tracking
+
+1. Repository update times (Repo datas version): 74 to 75
+
+## VII.📝 Structure fix
+
+1. `5.8.8` to `5.9.0`
+
+---
+
+# Format version=75

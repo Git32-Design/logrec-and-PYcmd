@@ -1,2 +1,0 @@
-# There no running requirements.
-# Please check dev-requirements.txt for development requirements.

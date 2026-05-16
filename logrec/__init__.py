@@ -4,9 +4,9 @@
     Code lib : logrec
     Fill name : Log Recorder
     Author : Git32-Design
-    Version : Rel 3.7.3
+    Version : Rel 4.9.5
     create at : 2025/11/8
-    lastest update : 2025/12/9
+    lastest update : 2026/5/16
     Used lib : os(Operating system)|time(Time)
     IDE : Visual Studio Code
     Developing language : Python 3.13.0
